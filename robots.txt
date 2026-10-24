@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://b2b.sunofabeach.com/sitemap.xml

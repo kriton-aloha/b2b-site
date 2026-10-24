@@ -1,0 +1,13 @@
+# Old WordPress URLs -> new
+/project/costa-navarino-romanos/  /project/the-romanos-costa-navarino/  301
+/project/costa-navarino-romanos   /project/the-romanos-costa-navarino/  301
+/sitemap_index.xml                /sitemap.xml  301
+/page-sitemap.xml                 /sitemap.xml  301
+/project-sitemap.xml              /sitemap.xml  301
+/category-sitemap.xml             /sitemap.xml  301
+/wp-content/uploads/*             /uploads/:splat  301
+/feed                             /  301
+/feed/                            /  301
+/wp-admin                         /  301
+/wp-admin/*                       /  301
+/wp-login.php                     /  301

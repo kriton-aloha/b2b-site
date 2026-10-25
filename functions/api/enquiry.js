@@ -1,7 +1,7 @@
 // POST /api/enquiry
 // Sends (1) the enquiry to the team and (2) an instant confirmation to the client.
 // Cloudflare Pages > Settings > Variables and secrets:
-//   RESEND_API_KEY  (required)  Resend.com API key, domain sunofabeach.com verified
+//   BREVO_API_KEY   (required)  Brevo API key (SMTP & API > API keys); sunofabeach.com authenticated in Brevo
 //   NOTIFY_TO       (optional)  default "b2b@sunofabeach.com"
 //   FROM_TEAM       (optional)  default "B2B Website <website@sunofabeach.com>"
 //   FROM_CLIENT     (optional)  default "Sun of a Beach for Business <b2b@sunofabeach.com>"
@@ -47,7 +47,7 @@ export async function onRequestPost({ request, env }) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || !val(d["full name"]) || !val(d["company name"])) {
     return json({ ok: false, error: "missing fields" }, 400);
   }
-  if (!env.RESEND_API_KEY) return json({ ok: false, error: "email not configured" }, 503);
+  if (!env.BREVO_API_KEY) return json({ ok: false, error: "email not configured" }, 503);
 
   const form = FORMS[d._form] || FORMS["Generic Contact Form"];
   const ref = Math.floor(Date.now() / 1000);
@@ -79,12 +79,22 @@ export async function onRequestPost({ request, env }) {
     text: clientText({ greek, form, first }),
   };
 
-  const send = (body) =>
-    fetch("https://api.resend.com/emails", {
+  // Brevo transactional email API
+  const addr = (s) => { const m = String(s).match(/^\s*(.*?)\s*<([^>]+)>\s*$/); return m ? { name: m[1], email: m[2] } : { email: String(s).trim() }; };
+  const send = (m) =>
+    fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
-      headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    }).then(async (r) => { if (!r.ok) throw new Error(`resend ${r.status} ${await r.text()}`); });
+      headers: { "api-key": env.BREVO_API_KEY, "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        sender: addr(m.from),
+        to: m.to.map(addr),
+        replyTo: addr(m.reply_to),
+        subject: m.subject,
+        htmlContent: m.html,
+        textContent: m.text,
+        tags: ["b2b-site"],
+      }),
+    }).then(async (r) => { if (!r.ok) throw new Error(`brevo ${r.status} ${await r.text()}`); });
 
   const [teamRes, clientRes] = await Promise.allSettled([send(team), send(client)]);
   if (teamRes.status === "rejected") console.error("team email", teamRes.reason);

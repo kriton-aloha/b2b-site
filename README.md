@@ -10,7 +10,9 @@ Static site for b2b.sunofabeach.com. No CMS, no database. Hosted on Cloudflare P
 - `_redirects`, `_headers`, `sitemap.xml`, `robots.txt`
 
 ## Enquiry forms
-`assets/site.js` sends each enquiry to the matching HubSpot form (portal 143463613) and emails a copy to business@sunofabeach.com through FormSubmit.co. No keys or settings needed. The first enquiry triggers one FormSubmit activation email to business@, which someone clicks once.
+`assets/site.js` sends each enquiry to the matching HubSpot form (portal 143463613) and to `functions/api/enquiry.js`, which emails the team (b2b@sunofabeach.com, subject "<Form> - Business Enquiry from <Company> - <ref>", reply-to = client) and sends the client an instant branded confirmation in English or Greek.
+
+Cloudflare Pages secret needed: `RESEND_API_KEY` (Resend.com, domain sunofabeach.com verified). Optional: `NOTIFY_TO`, `FROM_TEAM`, `FROM_CLIENT`.
 
 ## Adding a page or project
 Copy an existing folder, edit the text and images, add the URL to `sitemap.xml`.

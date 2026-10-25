@@ -8,7 +8,7 @@ var HUBSPOT_FORMS = {
   "Social Events Contact Form": "e937085e-4599-4649-a17d-36e83084efe6",
   "Welcome Gifts Contact Form": "5d9d2b9e-6e42-4825-b3d0-f5ec2dc9fde7"
 };
-var NOTIFY_EMAIL = "business@sunofabeach.com";
+var NOTIFY_EMAIL = "b2b@sunofabeach.com";
 var LABELS = {
   "company name": "Company", "full name": "Full name", email: "Email", phone: "Phone",
   guest_capacity: "Guest capacity", number_gifts: "Number of gifts",
@@ -38,13 +38,14 @@ function sendHubspot(formName, d, summary) {
   }).then(function (r) { if (!r.ok) throw new Error("hubspot " + r.status); });
 }
 
-function sendEmail(formName, d, rows) {
-  var body = { _subject: "B2B enquiry: " + (d["company name"] || "") + " – " + (d["full name"] || ""),
-               _replyto: d.email, _template: "table", Form: formName, Page: location.pathname };
-  rows.forEach(function (r) { body[r[0]] = r[1]; });
-  return fetch("https://formsubmit.co/ajax/" + NOTIFY_EMAIL, {
+var PAGE_LOADED = Date.now();
+
+// Team notification + instant reply to the client (functions/api/enquiry.js)
+function sendEmail(formName, d) {
+  var body = Object.assign({}, d, { _form: formName, _page: location.pathname, _t: PAGE_LOADED });
+  return fetch("/api/enquiry", {
     method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body)
   }).then(function (r) { if (!r.ok) throw new Error("email " + r.status); });
 }
@@ -88,7 +89,7 @@ document.addEventListener("submit", function (e) {
   if (btn) { btn.disabled = true; btn.style.opacity = ".6"; }
   msg.textContent = "";
 
-  Promise.allSettled([sendHubspot(formName, d, summary), sendEmail(formName, d, rows)]).then(function (res) {
+  Promise.allSettled([sendHubspot(formName, d, summary), sendEmail(formName, d)]).then(function (res) {
     if (res.some(function (r) { return r.status === "fulfilled"; })) done();
     else msg.textContent = "Something went wrong. Please call us on +30 210 7231646 or email " + NOTIFY_EMAIL + ".";
     res.forEach(function (r) { if (r.status === "rejected") console.warn(r.reason); });

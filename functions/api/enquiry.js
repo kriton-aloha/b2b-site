@@ -7,7 +7,7 @@
 //   FROM_CLIENT     (optional)  default "Sun of a Beach for Business <b2b@sunofabeach.com>"
 
 const SITE = "https://b2b.sunofabeach.com";
-const LOGO = SITE + "/uploads/email/logo.png";
+let LOGO = SITE + "/uploads/email/logo.png"; // set per request to the domain actually serving the site
 const PHONE = "+30 210 7231646";
 const GOLD = "#bfa582", INK = "#1d1d16", SAND = "#f6f3ee", MUTED = "#7a7466";
 
@@ -39,6 +39,7 @@ const val = (v) => (Array.isArray(v) ? v.join(", ") : String(v ?? "")).trim().sl
 export async function onRequestPost({ request, env }) {
   let d;
   try { d = await request.json(); } catch { return json({ ok: false }, 400); }
+  LOGO = new URL("/uploads/email/logo.png", request.url).href;
 
   if (d.hpname) return json({ ok: true });                       // honeypot
   if (d._t && Date.now() - Number(d._t) < 3000) return json({ ok: true }); // filled too fast = bot

@@ -99,7 +99,11 @@ export async function onRequestPost({ request, env }) {
   const [teamRes, clientRes] = await Promise.allSettled([send(team), send(client)]);
   if (teamRes.status === "rejected") console.error("team email", teamRes.reason);
   if (clientRes.status === "rejected") console.error("client email", clientRes.reason);
-  return teamRes.status === "fulfilled" ? json({ ok: true, ref }) : json({ ok: false }, 502);
+  // Brevo's error text (no secrets) helps diagnose sender/IP/key problems
+  const why = (r) => (r.status === "rejected" ? String(r.reason).replace(/^Error:\s*/, "").slice(0, 300) : undefined);
+  return teamRes.status === "fulfilled"
+    ? json({ ok: true, ref, clientEmail: clientRes.status === "fulfilled" ? "sent" : why(clientRes) })
+    : json({ ok: false, error: why(teamRes) }, 502);
 }
 
 // ---------- templates ----------

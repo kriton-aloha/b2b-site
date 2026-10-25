@@ -23,9 +23,9 @@ function cookie(name) {
 
 function sendHubspot(formName, d, summary) {
   var guid = HUBSPOT_FORMS[formName] || HUBSPOT_FORMS["Generic Contact Form"];
-  var parts = String(d["full name"] || "").trim().split(/\s+/);
+  // HubSpot keeps only "firstname" for these forms, so send the full name there (as the old site did)
   var fields = [
-    ["email", d.email], ["firstname", parts.shift() || ""], ["lastname", parts.join(" ")],
+    ["email", d.email], ["firstname", String(d["full name"] || "").trim()],
     ["company", d["company name"]], ["phone", d.phone], ["message", summary]
   ].filter(function (f) { return f[1]; }).map(function (f) { return { name: f[0], value: String(f[1]) }; });
   var context = { pageUri: location.href, pageName: document.title };

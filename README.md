@@ -14,5 +14,9 @@ Static site for b2b.sunofabeach.com. No CMS, no database. Hosted on Cloudflare P
 
 Cloudflare Pages secret needed: `BREVO_API_KEY` (Brevo, same account as the wholesale portal; sunofabeach.com authenticated). Optional: `NOTIFY_TO`, `FROM_TEAM`, `FROM_CLIENT`.
 
+## Thank-you pages and lead source
+After a successful enquiry the visitor goes to `/thank-you/<journey>/` (hospitality, welcome-gifts, corporate-gifts, events, general). Pages are `noindex` and not in the sitemap; use the URLs as conversion goals. The form also pushes `enquiry_submitted` (with `form_name`, `journey`) to the dataLayer and shows `.breakdance-form-message--success`, which the existing GTM element-visibility trigger uses.
+UTMs, gclid, fbclid and li_fat_id from the landing URL are kept for the visit and added to the team email ("Source") and the HubSpot message.
+
 ## Adding a page or project
 Copy an existing folder, edit the text and images, add the URL to `sitemap.xml`.

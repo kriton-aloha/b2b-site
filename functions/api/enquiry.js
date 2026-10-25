@@ -67,8 +67,8 @@ export async function onRequestPost({ request, env }) {
     to: (env.NOTIFY_TO || "b2b@sunofabeach.com").split(",").map((s) => s.trim()),
     reply_to: `${name} <${email}>`,
     subject,
-    html: teamHtml({ form, name, company, email, phone: val(d.phone), rows, message, when, page: val(d._page), subject }),
-    text: `${subject}\n\n${rows.map((r) => `${r[0]}: ${r[2]}`).join("\n")}\n\nMessage:\n${message}\n\nSent ${when} from ${SITE}${val(d._page)}\nReply to this email to answer the client directly.`,
+    html: teamHtml({ form, name, company, email, phone: val(d.phone), rows: val(d._source) ? [...rows, ["Source", "Πηγή", val(d._source).slice(0, 300), "source"]] : rows, message, when, page: val(d._page), subject }),
+    text: `${subject}\n\n${rows.map((r) => `${r[0]}: ${r[2]}`).join("\n")}\nSource: ${val(d._source) || "unknown"}\n\nMessage:\n${message}\n\nSent ${when} from ${SITE}${val(d._page)}\nReply to this email to answer the client directly.`,
   };
 
   const client = {

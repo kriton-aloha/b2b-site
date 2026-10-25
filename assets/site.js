@@ -21,6 +21,42 @@ function cookie(name) {
   return m ? decodeURIComponent(m[1]) : undefined;
 }
 
+// ---------- Lead source (UTMs / click IDs), kept for the visit ----------
+var THANK_YOU = {
+  "Hospitality Contact Form": "/thank-you/hospitality/",
+  "Welcome Gifts Contact Form": "/thank-you/welcome-gifts/",
+  "Corporate Gifts Contact Form": "/thank-you/corporate-gifts/",
+  "Social Events Contact Form": "/thank-you/events/",
+  "Generic Contact Form": "/thank-you/general/"
+};
+var ATTR = (function () {
+  var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid", "li_fat_id"];
+  var q = new URLSearchParams(location.search), now = {}, has = false, saved = null;
+  keys.forEach(function (k) { if (q.get(k)) { now[k] = q.get(k).slice(0, 200); has = true; } });
+  try { saved = JSON.parse(sessionStorage.getItem("soab_attr") || "null"); } catch (_) {}
+  if (has || !saved) {
+    now.landing_page = location.pathname;
+    var ref = document.referrer && new URL(document.referrer).host !== location.host ? document.referrer : "";
+    if (ref) now.referrer = ref.slice(0, 200);
+    saved = now;
+    try { sessionStorage.setItem("soab_attr", JSON.stringify(saved)); } catch (_) {}
+  }
+  return saved || {};
+})();
+function sourceText() {
+  var a = ATTR, parts = [];
+  if (a.utm_source || a.utm_medium) parts.push((a.utm_source || "?") + " / " + (a.utm_medium || "?"));
+  if (a.utm_campaign) parts.push("campaign: " + a.utm_campaign);
+  if (a.utm_content) parts.push("ad: " + a.utm_content);
+  if (a.utm_term) parts.push("keyword: " + a.utm_term);
+  if (a.gclid) parts.push("Google Ads click");
+  if (a.fbclid) parts.push("Meta click");
+  if (a.li_fat_id) parts.push("LinkedIn click");
+  if (!parts.length) parts.push(a.referrer ? "referral: " + a.referrer.replace(/^https?:\/\//, "").split("/")[0] : "direct / organic");
+  if (a.landing_page) parts.push("landed on " + a.landing_page);
+  return parts.join(", ");
+}
+
 function sendHubspot(formName, d, summary) {
   var guid = HUBSPOT_FORMS[formName] || HUBSPOT_FORMS["Generic Contact Form"];
   // HubSpot keeps only "firstname" for these forms, so send the full name there (as the old site did)
@@ -42,7 +78,7 @@ var PAGE_LOADED = Date.now();
 
 // Team notification + instant reply to the client (functions/api/enquiry.js)
 function sendEmail(formName, d) {
-  var body = Object.assign({}, d, { _form: formName, _page: location.pathname, _t: PAGE_LOADED });
+  var body = Object.assign({}, d, { _form: formName, _page: location.pathname, _t: PAGE_LOADED, _source: sourceText(), _attr: ATTR });
   return fetch("/api/enquiry", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -72,18 +108,24 @@ document.addEventListener("submit", function (e) {
     msg.style.cssText = "padding:16px 0;font-size:16px;";
     form.parentNode.insertBefore(msg, form.nextSibling);
   }
-  function done() {
+  function done(isBot) {
     form.reset();
     form.style.display = "none";
+    // class kept from the old site: GTM fires the lead conversions when this becomes visible
+    msg.className = "enquiry-msg breakdance-form-message breakdance-form-message--success";
     msg.textContent = "Your message has been received!";
-    if (window.dataLayer) window.dataLayer.push({ event: "enquiry_submitted", form_name: formName });
+    if (isBot) return;
+    var journey = (THANK_YOU[formName] || THANK_YOU["Generic Contact Form"]).split("/")[2];
+    (window.dataLayer = window.dataLayer || []).push({ event: "enquiry_submitted", form_name: formName, journey: journey });
+    setTimeout(function () { location.href = THANK_YOU[formName] || THANK_YOU["Generic Contact Form"]; }, 1200);
   }
-  if (d.hpname) { done(); return; } // bot filled the hidden field
+  if (d.hpname) { done(true); return; } // bot filled the hidden field
 
   var rows = Object.keys(LABELS).filter(function (k) { return d[k] && String(d[k]).length; })
     .map(function (k) { return [LABELS[k], Array.isArray(d[k]) ? d[k].join(", ") : String(d[k])]; });
   var summary = "B2B site – " + formName + " (" + location.pathname + ")\n\n" +
-    rows.map(function (r) { return r[0] + ": " + r[1]; }).join("\n");
+    rows.map(function (r) { return r[0] + ": " + r[1]; }).join("\n") +
+    "\n\nSource: " + sourceText();
 
   var btn = form.querySelector('button[type="submit"]');
   if (btn) { btn.disabled = true; btn.style.opacity = ".6"; }

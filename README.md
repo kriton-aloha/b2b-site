@@ -18,5 +18,8 @@ Cloudflare Pages secret needed: `BREVO_API_KEY` (Brevo, same account as the whol
 After a successful enquiry the visitor goes to `/thank-you/<journey>/` (hospitality, welcome-gifts, corporate-gifts, events, general). Pages are `noindex` and not in the sitemap; use the URLs as conversion goals. The form also pushes `enquiry_submitted` (with `form_name`, `journey`) to the dataLayer and shows `.breakdance-form-message--success`, which the existing GTM element-visibility trigger uses.
 UTMs, gclid, fbclid and li_fat_id from the landing URL are kept for the visit and added to the team email ("Source") and the HubSpot message.
 
+## Form qualification (short forms)
+Hospitality asks Type of property + Size (options depend on type, see SIZE_OPTIONS in assets/site.js). Qualified: hotel/resort/boutique 20+ rooms, villas 5+, beach club 50+ sunbeds, yachts 2+; welcome gifts 100+; corporate 100+ gifts; events 100+ guests. Small properties see the e-shop bundle message. Successful submissions push `enquiry_submitted` (with `qualified`) and, when qualified, `enquiry_qualified` to the dataLayer, and send Meta custom events `EnquirySubmitted` / `QualifiedEnquiry` (after cookie consent).
+
 ## Adding a page or project
 Copy an existing folder, edit the text and images, add the URL to `sitemap.xml`.

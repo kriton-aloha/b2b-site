@@ -25,12 +25,23 @@ const FIELDS = [
   ["full name", "Name", "Όνομα"],
   ["email", "Email", "Email"],
   ["phone", "Phone", "Τηλέφωνο"],
+  ["country", "Country", "Χώρα"],
+  ["website", "Website", "Ιστοσελίδα"],
+  ["interested_in", "Interested in", "Ενδιαφέρον"],
+  ["property_type", "Type of property", "Τύπος καταλύματος"],
+  ["property_size", "Size", "Μέγεθος"],
+  ["hosp_interest", "Interested in", "Ενδιαφέρον"],
   ["guest_capacity", "Guest capacity", "Χωρητικότητα"],
   ["number_gifts", "Number of gifts", "Αριθμός δώρων"],
   ["estim_num_gifts", "Number of gifts", "Αριθμός δώρων"],
-  ["corp_gifts_type", "Gift type", "Τύπος δώρων"],
+  ["corp_gifts_type", "Occasion", "Περίσταση"],
+  ["personalisation", "Logo / personalisation", "Λογότυπο / προσωποποίηση"],
+  ["delivery_date", "Needed by", "Ημερομηνία παράδοσης"],
   ["type_event", "Event type", "Τύπος εκδήλωσης"],
   ["attending_guests", "Guests attending", "Καλεσμένοι"],
+  ["event_date", "Event date", "Ημερομηνία εκδήλωσης"],
+  ["timeline", "When needed", "Πότε το χρειάζεστε"],
+  ["marketing_consent", "Marketing emails OK", "Ενημερωτικά email"],
 ];
 
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -57,6 +68,10 @@ export async function onRequestPost({ request, env }) {
   const company = val(d["company name"]);
   const message = val(d.message);
   const greek = /[Ͱ-Ͽ]/.test(name + message);
+  // country: detected from the visitor's connection (no form field)
+  if (!val(d.country) && request.cf && request.cf.country) {
+    try { d.country = new Intl.DisplayNames(["en"], { type: "region" }).of(request.cf.country); } catch { d.country = request.cf.country; }
+  }
   const rows = FIELDS.filter(([k]) => val(d[k])).map(([k, en, el]) => [en, el, val(d[k]), k]);
   const when = new Date().toLocaleString("en-GB", { timeZone: "Europe/Athens", dateStyle: "medium", timeStyle: "short" });
 
@@ -67,7 +82,7 @@ export async function onRequestPost({ request, env }) {
     to: (env.NOTIFY_TO || "b2b@sunofabeach.com").split(",").map((s) => s.trim()),
     reply_to: `${name} <${email}>`,
     subject,
-    html: teamHtml({ form, name, company, email, phone: val(d.phone), rows: val(d._source) ? [...rows, ["Source", "Πηγή", val(d._source).slice(0, 300), "source"]] : rows, message, when, page: val(d._page), subject }),
+    html: teamHtml({ form, name, company, email, phone: val(d.phone), rows: [...rows, ...(val(d._qualified) ? [["Qualified", "", `${val(d._qualified)} (${val(d._qualified_reason)})`, "qualified"]] : []), ...(val(d._source) ? [["Source", "Πηγή", val(d._source).slice(0, 300), "source"]] : [])], message, when, page: val(d._page), subject }),
     text: `${subject}\n\n${rows.map((r) => `${r[0]}: ${r[2]}`).join("\n")}\nSource: ${val(d._source) || "unknown"}\n\nMessage:\n${message}\n\nSent ${when} from ${SITE}${val(d._page)}\nReply to this email to answer the client directly.`,
   };
 
@@ -157,7 +172,7 @@ ${message ? `<tr><td style="padding:16px 32px 0;"><div style="font-size:12px;let
 }
 
 function clientHtml({ greek, form, first, rows, message }) {
-  const summary = rows.filter((r) => r[3] !== "email");
+  const summary = rows.filter((r) => !["email", "marketing_consent", "country"].includes(r[3]));
   if (message) summary.push(["Message", "Μήνυμα", message, "message"]);
   const t = greek
     ? {

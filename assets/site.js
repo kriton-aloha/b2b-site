@@ -11,10 +11,74 @@ var HUBSPOT_FORMS = {
 var NOTIFY_EMAIL = "b2b@sunofabeach.com";
 var LABELS = {
   "company name": "Company", "full name": "Full name", email: "Email", phone: "Phone",
-  guest_capacity: "Guest capacity", number_gifts: "Number of gifts",
-  estim_num_gifts: "Estimated number of gifts", corp_gifts_type: "Gift type",
-  type_event: "Event type", attending_guests: "Attending guests", message: "Message"
+  interested_in: "Interested in", property_type: "Type of property", property_size: "Size",
+  hosp_interest: "Interested in", guest_capacity: "Guest capacity", number_gifts: "Number of gifts",
+  estim_num_gifts: "Number of gifts", corp_gifts_type: "Occasion", personalisation: "Logo / personalisation",
+  delivery_date: "Needed by", type_event: "Event type", attending_guests: "Guests", event_date: "Event date",
+  country: "Country", timeline: "When needed", website: "Website", message: "Message",
+  marketing_consent: "Marketing emails OK"
 };
+
+// ---------- Size question depends on the type of property ----------
+var SIZE_OPTIONS = {
+  "Hotel": ["Number of rooms", ["1–19 rooms", "20–29 rooms", "30–49 rooms", "50–99 rooms", "100+ rooms"]],
+  "Resort": ["Number of rooms", ["1–19 rooms", "20–29 rooms", "30–49 rooms", "50–99 rooms", "100+ rooms"]],
+  "Boutique hotel": ["Number of rooms", ["1–19 rooms", "20–29 rooms", "30–49 rooms", "50–99 rooms", "100+ rooms"]],
+  "Villas": ["Number of villas you manage", ["1 villa", "2–4 villas", "5–10 villas", "10+ villas"]],
+  "Beach club": ["Number of sunbeds", ["Under 50 sunbeds", "50–100 sunbeds", "100–200 sunbeds", "200+ sunbeds"]],
+  "Yacht": ["Number of yachts", ["1 yacht", "2–5 yachts", "6+ yachts"]],
+  "Rooms to let / apartments": ["Number of units", ["1–5 units", "6–19 units", "20+ units"]],
+  "Other": ["Number of units", ["1–5 units", "6–19 units", "20+ units"]]
+};
+// Small properties: suggest the e-shop bundle builder (they can still send the form)
+var SMALL = { "1–19 rooms": "Equipping a smaller hotel?", "1 villa": "Equipping a villa?", "2–4 villas": "Equipping a few villas?",
+  "1 yacht": "Equipping a yacht?", "1–5 units": "Equipping a smaller property?", "6–19 units": "Equipping a smaller property?" };
+
+// Qualified = the kind of buyer we want Meta/LinkedIn to find more of
+function qualification(formName, d) {
+  var size = d.property_size || "", type = d.property_type || "";
+  if (formName === "Welcome Gifts Contact Form") return /^(100|250|500)/.test(d.number_gifts || "") ? [true, "Welcome gifts, " + d.number_gifts] : [false, "Welcome gifts, under 100"];
+  if (formName === "Hospitality Contact Form") {
+    if (/^(Hotel|Resort|Boutique hotel)$/.test(type)) return /^(20|30|50|100)/.test(size) ? [true, type + ", " + size] : [false, type + " under 20 rooms"];
+    if (type === "Villas") return /^(5|10)/.test(size) ? [true, "Villas, " + size] : [false, "Villas, " + size];
+    if (type === "Beach club") return /^(50|100|200)/.test(size) ? [true, "Beach club, " + size] : [false, "Beach club, " + size];
+    if (type === "Yacht") return /^(2|6)/.test(size) ? [true, "Yachts, " + size] : [false, "Single yacht"];
+    return [false, type || "Property type not given"];
+  }
+  if (formName === "Corporate Gifts Contact Form") return /^(100|300|1,000)/.test(d.estim_num_gifts || "") ? [true, "Corporate, " + d.estim_num_gifts + " gifts"] : [false, "Corporate, under 100 gifts"];
+  if (formName === "Social Events Contact Form") return /^(100|300)/.test(d.attending_guests || "") ? [true, "Event, " + d.attending_guests + " guests"] : [false, "Event, under 100 guests"];
+  return [false, "General enquiry"];
+}
+
+document.addEventListener("change", function (e) {
+  var el = e.target, form = el.form;
+  if (!form || !form.matches("form.breakdance-form")) return;
+  var name = el.getAttribute("name");
+  if (name === "fields[property_type]") {
+    var sizeSel = form.querySelector('[name="fields[property_size]"]'), cfg = SIZE_OPTIONS[el.value];
+    var label = sizeSel.closest(".breakdance-form-field").querySelector("label");
+    sizeSel.innerHTML = "";
+    var first = document.createElement("option"); first.value = ""; first.textContent = cfg ? "Select..." : "Select type of property first"; sizeSel.appendChild(first);
+    if (cfg) cfg[1].forEach(function (o) { var op = document.createElement("option"); op.value = op.textContent = o; sizeSel.appendChild(op); });
+    label.firstChild.textContent = " " + (cfg ? cfg[0] : "Size of property");
+    toggleNote(form, "");
+  }
+  if (name === "fields[property_size]") toggleNote(form, el.value);
+  if (name === "fields[interested_in]") {
+    var pn = form.querySelector(".soab-personal-note");
+    if (pn) pn.style.display = el.value === "Something for myself" ? "block" : "none";
+  }
+});
+function toggleNote(form, size) {
+  var note = form.querySelector(".soab-eshop-note"); if (!note) return;
+  var title = SMALL[size];
+  note.style.display = title ? "block" : "none";
+  if (title) note.querySelector(".soab-eshop-note__title").textContent = title;
+}
+document.addEventListener("click", function (e) {
+  var a = e.target.closest && e.target.closest(".soab-eshop-link, .soab-personal-note a");
+  if (a) (window.dataLayer = window.dataLayer || []).push({ event: a.classList.contains("soab-eshop-link") ? "eshop_bundle_click" : "eshop_personal_click" });
+});
 
 function cookie(name) {
   var m = document.cookie.match("(?:^|; )" + name + "=([^;]*)");
@@ -62,7 +126,7 @@ function sendHubspot(formName, d, summary) {
   // HubSpot keeps only "firstname" for these forms, so send the full name there (as the old site did)
   var fields = [
     ["email", d.email], ["firstname", String(d["full name"] || "").trim()],
-    ["company", d["company name"]], ["phone", d.phone], ["message", summary]
+    ["company", d["company name"]], ["phone", d.phone], ["website", d.website], ["country", d.country], ["message", summary]
   ].filter(function (f) { return f[1]; }).map(function (f) { return { name: f[0], value: String(f[1]) }; });
   var context = { pageUri: location.href, pageName: document.title };
   var hutk = cookie("hubspotutk");
@@ -116,14 +180,24 @@ document.addEventListener("submit", function (e) {
     msg.textContent = "Your message has been received!";
     if (isBot) return;
     var journey = (THANK_YOU[formName] || THANK_YOU["Generic Contact Form"]).split("/")[2];
-    (window.dataLayer = window.dataLayer || []).push({ event: "enquiry_submitted", form_name: formName, journey: journey });
+    var dl = (window.dataLayer = window.dataLayer || []);
+    dl.push({ event: "enquiry_submitted", form_name: formName, journey: journey, qualified: d._qualified === "Yes" });
+    if (d._qualified === "Yes") dl.push({ event: "enquiry_qualified", form_name: formName, journey: journey });
+    // Meta: real submissions only (fbq exists only after cookie consent). Campaigns should optimise on QualifiedEnquiry.
+    if (typeof window.fbq === "function") {
+      window.fbq("trackCustom", "EnquirySubmitted", { journey: journey });
+      if (d._qualified === "Yes") window.fbq("trackCustom", "QualifiedEnquiry", { journey: journey });
+    }
     setTimeout(function () { location.href = THANK_YOU[formName] || THANK_YOU["Generic Contact Form"]; }, 1200);
   }
   if (d.hpname) { done(true); return; } // bot filled the hidden field
 
   var rows = Object.keys(LABELS).filter(function (k) { return d[k] && String(d[k]).length; })
     .map(function (k) { return [LABELS[k], Array.isArray(d[k]) ? d[k].join(", ") : String(d[k])]; });
-  var summary = "B2B site – " + formName + " (" + location.pathname + ")\n\n" +
+  var q = qualification(formName, d);
+  d._qualified = q[0] ? "Yes" : "No"; d._qualified_reason = q[1];
+  var summary = "B2B site – " + formName + " (" + location.pathname + ")\n" +
+    "Qualified: " + d._qualified + " (" + q[1] + ")\n\n" +
     rows.map(function (r) { return r[0] + ": " + r[1]; }).join("\n") +
     "\n\nSource: " + sourceText();
 

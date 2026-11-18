@@ -98,8 +98,13 @@ section{position:relative}
 /* partners + values */
 .names{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 34px;margin-top:30px;text-align:center}
 .names span{font-family:var(--serif);font-size:clamp(18px,1.8vw,24px);color:var(--muted)}
-.vals{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 40px;margin-top:22px}
-.vals p{border-top:1px solid var(--line);padding-top:14px;font-size:18px}
+.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:26px 40px;align-items:center;justify-items:center;margin-top:30px}
+.logos img{max-height:62px;max-width:100%;width:auto;object-fit:contain;opacity:.85}
+.also{margin-top:26px;text-align:center;color:var(--muted);font-size:14px;line-height:1.6;max-width:900px;margin-left:auto;margin-right:auto}
+.vals{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:26px 28px;margin-top:26px}
+.vals figure{margin:0;text-align:center}
+.vals img{height:64px;width:auto;max-width:100%;object-fit:contain;display:block;margin:0 auto 12px}
+.vals figcaption{font-size:14px;line-height:1.35;letter-spacing:.02em}
 .center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
 
 /* closing */
@@ -147,7 +152,8 @@ html,body{height:100%;overflow:hidden}
   .mosaic img{aspect-ratio:auto;height:20svh}
   .names{gap:8px 18px}.names span{font-size:15px}
   .stats{grid-template-columns:repeat(3,1fr)!important}.stats .n{font-size:26px!important}
-  .vals{grid-template-columns:1fr 1fr;gap:6px 16px}.vals p{font-size:14px;padding-top:8px}
+  .vals{grid-template-columns:repeat(3,1fr);gap:16px 10px;margin-top:16px}.vals img{height:40px;margin-bottom:6px}.vals figcaption{font-size:11px}
+  .logos{grid-template-columns:repeat(2,1fr);gap:18px 22px;margin-top:18px}.logos img{max-height:40px}.also{font-size:11.5px;margin-top:14px}
 }
 /* controls */
 .ctrl{position:fixed;right:clamp(12px,3vw,32px);bottom:clamp(12px,3vh,28px);z-index:30;display:flex;align-items:center;gap:10px;background:rgba(246,243,238,.92);border:1px solid var(--line);border-radius:999px;padding:6px 8px 6px 16px;box-shadow:0 4px 18px rgba(0,0,0,.12);backdrop-filter:blur(6px)}
@@ -459,12 +465,13 @@ html,body{height:100%;overflow:hidden}
 
 <section><div class="wrap center">
   <h2 class="rv">Trusted by</h2>
-  <div class="names rv"><span>Four Seasons Athens</span><span>One&amp;Only Le Saint Géran</span><span>One&amp;Only Kéa</span><span>W Barcelona</span><span>W Costa Navarino</span><span>The Romanos, Costa Navarino</span><span>Hotel Grande Bretagne</span><span>Canaves Collection</span><span>The Ilisian</span><span>Bagatelle Miami</span><span>Club Med</span><span>Nikki Beach</span><span>Odera Tinos</span><span>The Rooster Antiparos</span><span>Grace Hotel Santorini</span><span>Domes Noruz Chania</span><span>Daios Cove</span><span>Pārocks</span><span>Alemagou</span><span>Belvedere Mykonos</span><span>Jackie O' Mykonos</span><span>Beach House Antiparos</span></div>
+  <div class="logos rv"><img src="/uploads/lookbook/logos/four-seasons.png" alt="Four Seasons" loading="lazy"><img src="/uploads/lookbook/logos/oo-saint-geran.png" alt="One&amp;Only Le Saint Géran" loading="lazy"><img src="/uploads/lookbook/logos/oo-kea.png" alt="One&amp;Only Kéa" loading="lazy"><img src="/uploads/lookbook/logos/w-barcelona.png" alt="W Barcelona" loading="lazy"><img src="/uploads/lookbook/logos/w-costa-navarino.png" alt="W Costa Navarino" loading="lazy"><img src="/uploads/lookbook/logos/romanos.png" alt="The Romanos, Costa Navarino" loading="lazy"><img src="/uploads/lookbook/logos/grace.png" alt="Grace Hotel Santorini" loading="lazy"><img src="/uploads/lookbook/logos/odera.png" alt="Odera Tinos" loading="lazy"><img src="/uploads/lookbook/logos/rooster.png" alt="The Rooster Antiparos" loading="lazy"><img src="/uploads/lookbook/logos/parocks.png" alt="Pārocks" loading="lazy"></div>
+  <p class="also rv">Also: Hotel Grande Bretagne · Canaves Collection · The Ilisian · Bagatelle Miami · Club Med · Nikki Beach · Domes Noruz Chania · Daios Cove · Alemagou · Belvedere Mykonos · Jackie O&#39; Mykonos · Beach House Antiparos</p>
 </div></section>
 
 <section class="sand"><div class="wrap">
   <p class="eyebrow rv">What we stand for</p><h2 class="rv">Our values</h2>
-  <div class="vals rv"><p>No.1 Greek beach fashion &amp; lifestyle company</p><p>Authentic &amp; honest</p><p>Proudly Greek-made, by family-owned production</p><p>100% premium cotton, eco-friendly</p><p>Pioneer with an authentic, unique approach</p><p>Driving sustainability, respecting nature, cruelty-free</p><p>Protecting sea life and coastal ecosystems, supporting WWF</p><p>Heartwarming</p><p>Dedicated to community</p><p>Supporting local artists</p><p>Embracing diversity</p></div>
+  <div class="vals rv"><figure><img src="/uploads/lookbook/values/no1.png" alt="" loading="lazy"><figcaption>No.1 Greek beach fashion &amp; lifestyle company</figcaption></figure><figure><img src="/uploads/lookbook/values/authentic.png" alt="" loading="lazy"><figcaption>Authentic &amp; honest</figcaption></figure><figure><img src="/uploads/lookbook/values/greek-made.png" alt="" loading="lazy"><figcaption>Proudly Greek-made, by family-owned production</figcaption></figure><figure><img src="/uploads/lookbook/values/cotton.png" alt="" loading="lazy"><figcaption>100% premium cotton, eco-friendly</figcaption></figure><figure><img src="/uploads/lookbook/values/pioneer.png" alt="" loading="lazy"><figcaption>Pioneer with an authentic, unique approach</figcaption></figure><figure><img src="/uploads/lookbook/values/sustainability.png" alt="" loading="lazy"><figcaption>Driving sustainability, respecting nature, cruelty-free</figcaption></figure><figure><img src="/uploads/lookbook/values/wwf.png" alt="" loading="lazy"><figcaption>Protecting sea life and coastal ecosystems, supporting WWF</figcaption></figure><figure><img src="/uploads/lookbook/values/heartwarming.png" alt="" loading="lazy"><figcaption>Heartwarming</figcaption></figure><figure><img src="/uploads/lookbook/values/community.png" alt="" loading="lazy"><figcaption>Dedicated to community</figcaption></figure><figure><img src="/uploads/lookbook/values/artists.png" alt="" loading="lazy"><figcaption>Supporting local artists</figcaption></figure><figure><img src="/uploads/lookbook/values/diversity.png" alt="" loading="lazy"><figcaption>Embracing diversity</figcaption></figure></div>
 </div></section>
 
 

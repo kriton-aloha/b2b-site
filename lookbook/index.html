@@ -155,6 +155,35 @@ html,body{height:100%;overflow:hidden}
 .prog{position:fixed;left:0;top:0;height:3px;background:var(--gold);z-index:30;transition:width .3s}
 .brandmark{position:fixed;left:clamp(14px,3vw,32px);bottom:clamp(14px,3vh,30px);z-index:29;height:30px;opacity:.9;pointer-events:none}
 @media (max-width:860px){.brandmark{display:none}}
+
+/* ===== Selection + request ===== */
+.pick{display:inline-flex;align-items:center;gap:8px;margin-top:22px;align-self:flex-start;border:1px solid var(--ink);background:transparent;color:var(--ink);font:700 13px var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:11px 18px;border-radius:999px;cursor:pointer}
+.pick[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.pick.sm{margin-top:10px;padding:7px 12px;font-size:11px}
+.spec .pick.xs{margin:0 0 0 10px;padding:4px 9px;font-size:11px;letter-spacing:.06em;flex:none}
+.mysel{position:fixed;left:50%;transform:translateX(-50%);bottom:clamp(12px,3vh,28px);z-index:31;background:var(--gold);color:#fff;text-decoration:none;font:700 13px var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:13px 18px;border-radius:999px;box-shadow:0 4px 18px rgba(0,0,0,.18)}
+.mysel b{display:inline-block;background:#fff;color:var(--gold);border-radius:999px;min-width:22px;padding:1px 6px;margin-left:6px;text-align:center}
+@media (max-width:860px){.mysel{left:14px;transform:none;bottom:14px;padding:12px 14px}}
+.rq{max-width:900px;position:relative}
+.rq-sel{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.rq-item{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.rq-item b{font-family:var(--serif);font-weight:500;font-size:18px;flex:1 1 180px}
+.rq-item .q{display:flex;gap:6px;flex-wrap:wrap}
+.rq-item .q button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 11px;font:600 13px var(--sans);cursor:pointer;color:var(--ink)}
+.rq-item .q button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.rq-item .x{border:0;background:none;font-size:20px;cursor:pointer;color:#6B6658;padding:0 4px}
+.rq-empty{padding:14px;border:1.5px dashed var(--line);border-radius:10px;color:var(--muted);font-size:15px}
+.rq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}
+.rq-grid label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6B6658}
+.rq-grid label.wide{grid-column:1/-1}
+.rq-grid .opt{text-transform:none;letter-spacing:0;font-weight:400}
+.rq input:not([type=checkbox]),.rq select,.rq textarea{font:400 16px var(--sans);color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:8px;padding:11px 12px;width:100%}
+.rq-check{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:14px;color:var(--muted)}
+.rq-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.rq-foot .btn{border:0;cursor:pointer;background:var(--ink);color:var(--paper)}
+.rq-msg{font-size:14px;color:#A33A3A}
+.rq .bad{border-color:#A33A3A!important}
+@media (max-width:860px){.rq-grid{grid-template-columns:1fr}.rq-item b{font-size:16px}}
 </style>
 </head>
 <body>
@@ -173,7 +202,7 @@ html,body{height:100%;overflow:hidden}
     <img class="logo" src="/lookbook/logo-hospitality-light.png" alt="Sun of a Beach Hospitality">
     <p class="motto">Born in Greece, raised on the beach.</p>
   </div>
-  <span class="scroll">Swipe or press → </span>
+  <span class="scroll">Swipe or press →  ·  tap ♡ on what you like</span>
 </section>
 
 <section class="split rev">
@@ -395,6 +424,29 @@ html,body{height:100%;overflow:hidden}
   <div class="vals rv"><p>No.1 Greek beach fashion &amp; lifestyle company</p><p>Authentic &amp; honest</p><p>Proudly Greek-made, by family-owned production</p><p>100% premium cotton, eco-friendly</p><p>Pioneer with an authentic, unique approach</p><p>Driving sustainability, respecting nature, cruelty-free</p><p>Protecting sea life and coastal ecosystems, supporting WWF</p><p>Heartwarming</p><p>Dedicated to community</p><p>Supporting local artists</p><p>Embracing diversity</p></div>
 </div></section>
 
+
+<section class="sand" id="request" aria-label="Request an offer"><div class="wrap">
+  <p class="eyebrow">Your selection</p>
+  <h2>Request an offer</h2>
+  <p class="lead" id="rq-intro">Tell us what you liked and roughly how many. We'll send you an offer made for your property, usually within one working day.</p>
+  <form id="rq" class="rq" novalidate>
+    <div class="rq-sel" id="rq-sel"></div>
+    <div class="rq-grid">
+      <label>Full name*<input name="full name" required autocomplete="name"></label>
+      <label>Hotel / company*<input name="company name" required autocomplete="organization"></label>
+      <label>Email*<input name="email" type="email" required autocomplete="email"></label>
+      <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
+      <label>Type of property<select name="property_type" id="rq-type"><option value="">Select…</option><option>Hotel</option><option>Resort</option><option>Boutique hotel</option><option>Villas</option><option>Beach club</option><option>Yacht</option><option>Rooms to let / apartments</option><option>Other</option></select></label>
+      <label><span id="rq-size-l">Size</span><select name="property_size" id="rq-size"><option value="">Select type of property first</option></select></label>
+      <label>Needed by<select name="delivery_date"><option value="">Not sure yet</option><option>December 2026</option><option>January 2027</option><option>February 2027</option><option>March 2027</option><option>April 2027</option><option>May 2027</option><option>June 2027 or later</option></select></label>
+      <label class="wide">Anything else? <span class="opt">Colours, logo, ideas</span><textarea name="message" rows="2"></textarea></label>
+    </div>
+    <input name="hpname" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+    <label class="rq-check"><input type="checkbox" name="marketing_consent" value="Yes"> Send me news and new collections from Sun of a Beach</label>
+    <div class="rq-foot"><button type="submit" class="btn" id="rq-go">Send request</button><span class="rq-msg" id="rq-msg" role="status"></span></div>
+  </form>
+  <div class="rq-done" id="rq-done" hidden><h3>Thank you! We've received your request.</h3><p class="lead" style="margin-top:10px">We'll come back to you with an offer shortly. A confirmation is on its way to your inbox.</p></div>
+</div></section>
 <section class="hero closing" id="contact" aria-label="Contact">
   <video autoplay muted loop playsinline preload="none" poster="/lookbook/closing-poster.jpg">
     <source src="/uploads/2024/09/sun-of-a-beach-yellow-pareo-bikini.webm" type="video/webm">
@@ -404,12 +456,13 @@ html,body{height:100%;overflow:hidden}
     <p class="line">Upgrade your TripAdvisor ratings, one towel at a time.</p>
     <img class="logo" src="/lookbook/logo-hospitality-light.png" alt="Sun of a Beach Hospitality">
     <p class="contact">Lala Koukkou · Business Development Manager<br><a href="mailto:lala@sunofabeach.com">lala@sunofabeach.com</a> · <a href="tel:+306948963850">+30 694 896 3850</a></p>
-    <a class="btn" href="/hospitality/">Request an offer</a>
+    <a class="btn" href="#request">Request an offer</a>
   </div>
 </section>
 </main>
 <div class="prog" id="prog"></div>
 <img class="brandmark" id="brandmark" src="/lookbook/logo-hospitality.png" alt="">
+<a class="mysel" id="mysel" href="#request" hidden>♡ My selection <b id="mysel-n">0</b></a>
 <nav class="ctrl" aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span class="count" id="count">1 / 1</span><button id="next" aria-label="Next slide">→</button></nav>
 
 
@@ -420,7 +473,7 @@ const count=document.getElementById('count'), prog=document.getElementById('prog
 let cur=0;
 function go(i){ i=Math.max(0,Math.min(slides.length-1,i)); deck.scrollTo({left:slides[i].offsetLeft,behavior:'smooth'}); }
 function update(){ cur=Math.round(deck.scrollLeft/deck.clientWidth); count.textContent=(cur+1)+' / '+slides.length; prog.style.width=((cur+1)/slides.length*100)+'%';
-  prev.disabled=cur===0; next.disabled=cur===slides.length-1; mark.style.opacity=slides[cur].classList.contains('hero')?0:.9;
+  prev.disabled=cur===0; next.disabled=cur===slides.length-1; mark.style.opacity=slides[cur].classList.contains('hero')?0:.9; const ms=document.getElementById('mysel'); if(ms) ms.style.visibility=slides[cur].id==='request'?'hidden':'';
   if(window.dataLayer) dataLayer.push({event:'lookbook_slide', slide:cur+1, slide_id:slides[cur].id||''}); }
 let t; deck.addEventListener('scroll',()=>{ clearTimeout(t); t=setTimeout(update,80); },{passive:true});
 prev.onclick=()=>go(cur-1); next.onclick=()=>go(cur+1);
@@ -436,6 +489,77 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('video').forEach(v=>vo.observe(v));
 } else document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
 update(); deck.focus({preventScroll:true});
+</script>
+
+<script>
+// "My selection": tap ♡ on products, then request an offer with quantities. Sends like the site's Hospitality form.
+(function(){
+  const KEY='soab_lookbook_sel', QTY=['100','250','500','1,000+','Not sure'];
+  let sel=[]; try{ sel=JSON.parse(localStorage.getItem(KEY)||'[]')||[]; }catch(e){}
+  const save=()=>{ try{ localStorage.setItem(KEY,JSON.stringify(sel)); }catch(e){} };
+  const has=n=>sel.some(s=>s.name===n);
+  function toggle(n){ if(has(n)) sel=sel.filter(s=>s.name!==n); else { sel.push({name:n,qty:''}); if(window.dataLayer) dataLayer.push({event:'lookbook_pick',product:n}); } save(); paint(); }
+  function btn(n,cls){ const b=document.createElement('button'); b.type='button'; b.className='pick '+(cls||''); b.dataset.pick=n; b.onclick=()=>toggle(n); return b; }
+  // product slides with specs: one button for the product (lists of variants get a button per row)
+  document.querySelectorAll('#top > section').forEach(s=>{
+    const h2=s.querySelector('.text h2'), specs=s.querySelector('.text .specs');
+    if(!h2||!specs) return;
+    const name=h2.textContent.trim();
+    if(/^(Totes|Bathrobes)$/.test(name)){ specs.querySelectorAll('.spec').forEach(r=>{ const n=r.firstElementChild.textContent.trim(); r.appendChild(btn(n,'xs')); }); }
+    else { const b=btn(name), l=s.querySelector('.text .lead'); (l||h2).after(b); b.style.marginTop='0'; b.style.marginBottom='18px'; }
+  });
+  document.querySelectorAll('div.card h3, .textcard h3').forEach(h=>{ h.parentNode.appendChild(btn(h.textContent.trim(),'sm')); });
+  const bq=document.querySelector('#boutique .text'); if(bq) bq.appendChild(btn('Hotel boutique (wholesale)'));
+  function paint(){
+    document.querySelectorAll('[data-pick]').forEach(b=>{ const on=has(b.dataset.pick); b.setAttribute('aria-pressed',on); b.textContent=(on?'✓ Added':'♡ Add to my selection'); if(b.classList.contains('xs')||b.classList.contains('sm')) b.textContent=on?'✓ Added':'♡ Add'; });
+    const m=document.getElementById('mysel'); m.hidden=!sel.length; document.getElementById('mysel-n').textContent=sel.length;
+    const box=document.getElementById('rq-sel');
+    box.innerHTML = sel.length ? '' : '<div class="rq-empty">Nothing selected yet. Go back and tap ♡ on the products you like, or just tell us below what you need.</div>';
+    sel.forEach((s,i)=>{ const d=document.createElement('div'); d.className='rq-item';
+      d.innerHTML='<b></b><div class="q"></div><button type="button" class="x" aria-label="Remove">×</button>'; d.querySelector('b').textContent=s.name;
+      QTY.forEach(q=>{ const b=document.createElement('button'); b.type='button'; b.textContent=q==='Not sure'?q:q+' pcs'; b.setAttribute('aria-pressed',s.qty===q); b.onclick=()=>{ s.qty=s.qty===q?'':q; save(); paint(); }; d.querySelector('.q').appendChild(b); });
+      d.querySelector('.x').onclick=()=>toggle(s.name); box.appendChild(d); });
+  }
+  paint();
+  // size options follow the type (same as the site)
+  const SIZES={"Hotel":["Number of rooms",["1–19 rooms","20–29 rooms","30–49 rooms","50–99 rooms","100+ rooms"]],"Resort":["Number of rooms",["1–19 rooms","20–29 rooms","30–49 rooms","50–99 rooms","100+ rooms"]],"Boutique hotel":["Number of rooms",["1–19 rooms","20–29 rooms","30–49 rooms","50–99 rooms","100+ rooms"]],"Villas":["Number of villas you manage",["1 villa","2–4 villas","5–10 villas","10+ villas"]],"Beach club":["Number of sunbeds",["Under 50 sunbeds","50–100 sunbeds","100–200 sunbeds","200+ sunbeds"]],"Yacht":["Number of yachts",["1 yacht","2–5 yachts","6+ yachts"]],"Rooms to let / apartments":["Number of units",["1–5 units","6–19 units","20+ units"]],"Other":["Number of units",["1–5 units","6–19 units","20+ units"]]};
+  const type=document.getElementById('rq-type'), size=document.getElementById('rq-size');
+  type.onchange=()=>{ const c=SIZES[type.value]; document.getElementById('rq-size-l').textContent=c?c[0]:'Size'; size.innerHTML='<option value="">'+(c?'Select…':'Select type of property first')+'</option>'+(c?c[1].map(o=>'<option>'+o+'</option>').join(''):''); };
+  function qualified(d){ const t=d.property_type||'', s=d.property_size||'';
+    if(/^(Hotel|Resort|Boutique hotel)$/.test(t)) return /^(20|30|50|100)/.test(s)?[true,t+', '+s]:[false,t+' under 20 rooms'];
+    if(t==='Villas') return [/^(5|10)/.test(s),'Villas, '+s]; if(t==='Beach club') return [/^(50|100|200)/.test(s),'Beach club, '+s];
+    if(t==='Yacht') return [/^(2|6)/.test(s),'Yachts, '+s]; return [false,t||'Property type not given']; }
+  const T0=Date.now(), FORM='Hospitality Contact Form', GUID='f75f542e-a8be-47aa-9e36-3c9b716f4819';
+  const ref=new URLSearchParams(location.search).get('ref')||'';
+  const form=document.getElementById('rq'), msg=document.getElementById('rq-msg'), go=document.getElementById('rq-go');
+  form.addEventListener('input',e=>e.target.classList.remove('bad'));
+  form.onsubmit=async e=>{
+    e.preventDefault(); msg.textContent='';
+    const d={}; new FormData(form).forEach((v,k)=>{ d[k]=String(v).trim(); });
+    let bad=false; ['full name','company name','email'].forEach(k=>{ const el=form.elements[k]; if(!d[k]||(k==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d[k]))){ el.classList.add('bad'); bad=true; } });
+    if(bad){ msg.textContent='Please fill in your name, hotel and a valid email.'; return; }
+    if(d.hpname) { form.hidden=true; document.getElementById('rq-done').hidden=false; return; }
+    const picks=sel.map(s=>s.name+(s.qty?' × '+(s.qty==='Not sure'?'quantity not sure':s.qty+' pcs'):''));
+    d.hosp_interest=picks.length?picks.join('; '):'';
+    d.message=[picks.length?'Selected in the Hospitality Lookbook:\n- '+picks.join('\n- '):'', d.message].filter(Boolean).join('\n\n');
+    const q=qualified(d); d._qualified=q[0]?'Yes':'No'; d._qualified_reason=q[1];
+    const src='Hospitality Lookbook'+(ref?' (ref '+ref+')':'')+(document.referrer?' · from '+document.referrer:'');
+    const summary='B2B site – '+FORM+' (/lookbook/)\nQualified: '+d._qualified+' ('+q[1]+')\n\n'+[['Type of property',d.property_type],['Size',d.property_size],['Needed by',d.delivery_date],['Phone',d.phone]].filter(r=>r[1]).map(r=>r[0]+': '+r[1]).join('\n')+'\n\n'+d.message+'\n\nSource: '+src;
+    go.disabled=true; go.textContent='Sending…';
+    const hs=fetch('https://api.hsforms.com/submissions/v3/integration/submit/143463613/'+GUID,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({fields:[['email',d.email],['firstname',d['full name']],['company',d['company name']],['phone',d.phone],['message',summary]].filter(f=>f[1]).map(f=>({name:f[0],value:f[1]})),context:{pageUri:location.href,pageName:document.title}})}).then(r=>{ if(!r.ok) throw r.status; });
+    const em=fetch('/api/enquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({},d,{_form:FORM,_page:'/lookbook/',_t:T0,_source:src}))}).then(r=>{ if(!r.ok) throw r.status; });
+    const res=await Promise.allSettled([hs,em]);
+    go.disabled=false; go.textContent='Send request';
+    if(res.some(r=>r.status==='fulfilled')){
+      form.hidden=true; document.getElementById('rq-done').hidden=false; document.getElementById('rq-intro').hidden=true;
+      const dl=(window.dataLayer=window.dataLayer||[]); dl.push({event:'enquiry_submitted',form_name:FORM,journey:'lookbook',qualified:d._qualified==='Yes',products:sel.length});
+      if(d._qualified==='Yes') dl.push({event:'enquiry_qualified',form_name:FORM,journey:'lookbook'});
+      if(typeof window.fbq==='function'){ fbq('trackCustom','EnquirySubmitted',{journey:'lookbook'}); if(d._qualified==='Yes') fbq('trackCustom','QualifiedEnquiry',{journey:'lookbook'}); }
+      sel=[]; save(); paint();
+    } else msg.textContent='Something went wrong. Please email lala@sunofabeach.com or call +30 694 896 3850.';
+  };
+})();
 </script>
 </body>
 </html>

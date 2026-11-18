@@ -197,12 +197,16 @@ html,body{height:100%;overflow:hidden}
 @media (max-width:860px){.mysel{left:14px;transform:none;bottom:14px;padding:12px 14px}}
 .rq{max-width:900px;position:relative}
 .rq-sel{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
-.rq-item{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-.rq-item b{font-family:var(--serif);font-weight:500;font-size:18px;flex:1 1 180px}
-.rq-item .q{display:flex;gap:6px;flex-wrap:wrap}
-.rq-item .q button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 11px;font:600 13px var(--sans);cursor:pointer;color:var(--ink)}
-.rq-item .q button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.rq-item .x{border:0;background:none;font-size:20px;cursor:pointer;color:#6B6658;padding:0 4px}
+.rq-item{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 8px 10px 10px}
+.rq-item .th{width:56px;height:56px;border-radius:8px;background:var(--sand);overflow:hidden;display:block}
+.rq-item .th img{width:100%;height:100%;object-fit:cover}
+.rq-item .mid{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;min-width:0}
+.rq-item b{font-family:var(--serif);font-weight:500;font-size:18px;line-height:1.2;flex:1 1 160px}
+.rq-item label{display:flex;flex-direction:column;gap:3px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6B6658;flex:0 0 190px}
+.rq-item select{padding:8px 10px!important;font-size:15px!important}
+.rq-item .x{border:0;background:none;font-size:22px;line-height:1;cursor:pointer;color:#6B6658;padding:6px 8px;align-self:start}
+.rq-tip{margin:0 0 2px;font-size:14px;color:var(--gold);font-weight:600}
+@media (max-width:860px){.rq-item b{font-size:16px;flex-basis:100%}.rq-item label{flex:1 1 100%}}
 .rq-empty{padding:14px;border:1.5px dashed var(--line);border-radius:10px;color:var(--muted);font-size:15px}
 .rq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}
 .rq-grid label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6B6658}
@@ -513,7 +517,7 @@ const count=document.getElementById('count'), prog=document.getElementById('prog
 let cur=0;
 function go(i){ i=Math.max(0,Math.min(slides.length-1,i)); deck.scrollTo({left:slides[i].offsetLeft,behavior:'smooth'}); }
 function update(){ cur=Math.round(deck.scrollLeft/deck.clientWidth); count.textContent=(cur+1)+' / '+slides.length; prog.style.width=((cur+1)/slides.length*100)+'%';
-  prev.disabled=cur===0; next.disabled=cur===slides.length-1; mark.style.opacity=slides[cur].classList.contains('hero')?0:.9; const ms=document.getElementById('mysel'); if(ms) ms.style.visibility=slides[cur].id==='request'?'hidden':'';
+  prev.disabled=cur===0; next.disabled=cur===slides.length-1; mark.style.opacity=(slides[cur].classList.contains('hero')||slides[cur].id==='request')?0:.9; const ms=document.getElementById('mysel'); if(ms) ms.style.visibility=slides[cur].id==='request'?'hidden':'';
   if(window.dataLayer) dataLayer.push({event:'lookbook_slide', slide:cur+1, slide_id:slides[cur].id||''}); }
 let t; deck.addEventListener('scroll',()=>{ clearTimeout(t); t=setTimeout(update,80); },{passive:true});
 prev.onclick=()=>go(cur-1); next.onclick=()=>go(cur+1);
@@ -534,12 +538,13 @@ update(); deck.focus({preventScroll:true});
 <script>
 // "My selection": tap ♡ on products, then request an offer with quantities. Sends like the site's Hospitality form.
 (function(){
-  const KEY='soab_lookbook_sel', QTY=['100','250','500','1,000+','Not sure'];
+  const KEY='soab_lookbook_sel', QTY=['Up to 100','100–250','250–500','500–1,000','1,000+','Not sure yet'];
   let sel=[]; try{ sel=JSON.parse(localStorage.getItem(KEY)||'[]')||[]; }catch(e){}
   const save=()=>{ try{ localStorage.setItem(KEY,JSON.stringify(sel)); }catch(e){} };
   const has=n=>sel.some(s=>s.name===n);
-  function toggle(n){ if(has(n)) sel=sel.filter(s=>s.name!==n); else { sel.push({name:n,qty:''}); if(window.dataLayer) dataLayer.push({event:'lookbook_pick',product:n}); } save(); paint(); }
-  function btn(n,cls){ const b=document.createElement('button'); b.type='button'; b.className='pick '+(cls||''); b.dataset.pick=n; b.onclick=()=>toggle(n); return b; }
+  function toggle(n,el){ if(has(n)) sel=sel.filter(s=>s.name!==n); else { sel.push({name:n,qty:'',img:thumbOf(el)}); if(window.dataLayer) dataLayer.push({event:'lookbook_pick',product:n}); } save(); paint(); }
+  function btn(n,cls){ const b=document.createElement('button'); b.type='button'; b.className='pick '+(cls||''); b.dataset.pick=n; b.onclick=()=>toggle(n,b); return b; }
+  function thumbOf(el){ if(!el) return ''; const c=el.closest('.card,section'); const i=c&&(c.querySelector('img:not(.brandmark)')||null), v=c&&c.querySelector('video'); return (i&&i.getAttribute('src'))||(v&&v.getAttribute('poster'))||''; }
   // product slides with specs: one button for the product (lists of variants get a button per row)
   document.querySelectorAll('#top > section').forEach(s=>{
     const h2=s.querySelector('.text h2'), specs=s.querySelector('.text .specs');
@@ -556,9 +561,13 @@ update(); deck.focus({preventScroll:true});
     const box=document.getElementById('rq-sel');
     box.innerHTML = sel.length ? '' : '<div class="rq-empty">Nothing selected yet. Go back and tap ♡ on the products you like, or just tell us below what you need.</div>';
     sel.forEach((s,i)=>{ const d=document.createElement('div'); d.className='rq-item';
-      d.innerHTML='<b></b><div class="q"></div><button type="button" class="x" aria-label="Remove">×</button>'; d.querySelector('b').textContent=s.name;
-      QTY.forEach(q=>{ const b=document.createElement('button'); b.type='button'; b.textContent=q==='Not sure'?q:q+' pcs'; b.setAttribute('aria-pressed',s.qty===q); b.onclick=()=>{ s.qty=s.qty===q?'':q; save(); paint(); }; d.querySelector('.q').appendChild(b); });
+      d.innerHTML='<span class="th"></span><div class="mid"><b></b><label><span>Approx. quantity</span><select><option value="">Select…</option></select></label></div><button type="button" class="x" aria-label="Remove">×</button>';
+      d.querySelector('b').textContent=s.name;
+      if(s.img){ const im=document.createElement('img'); im.src=s.img; im.alt=''; d.querySelector('.th').appendChild(im); }
+      const sl=d.querySelector('select'); QTY.forEach(q=>{ const o=document.createElement('option'); o.value=q; o.textContent=q==='Not sure yet'?q:q+' pcs'; sl.appendChild(o); }); sl.value=s.qty||'';
+      sl.onchange=()=>{ s.qty=sl.value; save(); };
       d.querySelector('.x').onclick=()=>toggle(s.name); box.appendChild(d); });
+    if(sel.length){ const t=document.createElement('p'); t.className='rq-tip'; t.textContent='Rough numbers are fine. We\'ll fine-tune quantities, colours and logo with you in the offer.'; box.prepend(t); }
   }
   paint();
   // first time a product slide is on screen: explain the selection once
@@ -589,7 +598,7 @@ update(); deck.focus({preventScroll:true});
     let bad=false; ['full name','company name','email'].forEach(k=>{ const el=form.elements[k]; if(!d[k]||(k==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d[k]))){ el.classList.add('bad'); bad=true; } });
     if(bad){ msg.textContent='Please fill in your name, hotel and a valid email.'; return; }
     if(d.hpname) { form.hidden=true; document.getElementById('rq-done').hidden=false; return; }
-    const picks=sel.map(s=>s.name+(s.qty?' × '+(s.qty==='Not sure'?'quantity not sure':s.qty+' pcs'):''));
+    const picks=sel.map(s=>s.name+' – '+(s.qty?(s.qty==='Not sure yet'?'quantity not sure yet':'approx. '+s.qty+' pcs'):'no quantity given'));
     d.hosp_interest=picks.length?picks.join('; '):'';
     d.message=[picks.length?'Selected in the Hospitality Lookbook:\n- '+picks.join('\n- '):'', d.message].filter(Boolean).join('\n\n');
     const q=qualified(d); d._qualified=q[0]?'Yes':'No'; d._qualified_reason=q[1];

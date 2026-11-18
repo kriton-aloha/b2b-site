@@ -157,6 +157,13 @@ html,body{height:100%;overflow:hidden}
 @media (max-width:860px){.brandmark{display:none}}
 
 /* ===== Selection + request ===== */
+.hint{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(clamp(12px,3vh,28px) + 64px);z-index:32;width:min(440px,calc(100vw - 28px));background:var(--ink);color:var(--paper);border-radius:14px;padding:16px 18px;box-shadow:0 8px 28px rgba(0,0,0,.25);animation:rise .4s ease-out both}
+.hint b{font-family:var(--serif);font-weight:500;font-size:20px;display:block;margin-bottom:6px}
+.hint p{font-size:15px;line-height:1.5;color:#E2DCD0;margin:0 0 12px}
+.hint button{border:0;background:#E2CFAE;color:var(--ink);font:700 13px var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:10px 16px;border-radius:999px;cursor:pointer}
+@media (max-width:860px){.hint{bottom:auto;top:14px}}
+.pick.pulse{animation:pulse 1.4s ease-in-out 3}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(122,96,68,.0)}50%{box-shadow:0 0 0 8px rgba(122,96,68,.25)}}
 .pick{display:inline-flex;align-items:center;gap:8px;margin-top:22px;align-self:flex-start;border:1px solid var(--ink);background:transparent;color:var(--ink);font:700 13px var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:11px 18px;border-radius:999px;cursor:pointer}
 .pick[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 .pick.sm{margin-top:10px;padding:7px 12px;font-size:11px}
@@ -462,6 +469,7 @@ html,body{height:100%;overflow:hidden}
 </main>
 <div class="prog" id="prog"></div>
 <img class="brandmark" id="brandmark" src="/lookbook/logo-hospitality.png" alt="">
+<div class="hint" id="hint" hidden role="dialog" aria-label="How to request an offer"><b>♡ Pick what you like</b><p>Tap “Add to my selection” on any product. At the end, send us your selection with rough quantities and we'll prepare an offer just for you.</p><button type="button" id="hint-ok">Got it</button></div>
 <a class="mysel" id="mysel" href="#request" hidden>♡ My selection <b id="mysel-n">0</b></a>
 <nav class="ctrl" aria-label="Slides"><button id="prev" aria-label="Previous slide">←</button><span class="count" id="count">1 / 1</span><button id="next" aria-label="Next slide">→</button></nav>
 
@@ -521,6 +529,16 @@ update(); deck.focus({preventScroll:true});
       d.querySelector('.x').onclick=()=>toggle(s.name); box.appendChild(d); });
   }
   paint();
+  // first time a product slide is on screen: explain the selection once
+  let hinted=false; try{ hinted=localStorage.getItem('soab_lookbook_hint')==='1'; }catch(e){}
+  const hint=document.getElementById('hint');
+  const closeHint=()=>{ hint.hidden=true; hinted=true; try{ localStorage.setItem('soab_lookbook_hint','1'); }catch(e){} };
+  document.getElementById('hint-ok').onclick=closeHint;
+  document.addEventListener('click',e=>{ if(!hint.hidden && e.target.closest('[data-pick]')) closeHint(); });
+  const deckEl=document.getElementById('top');
+  const watchHint=()=>{ if(hinted) return; const i=Math.round(deckEl.scrollLeft/deckEl.clientWidth), s=deckEl.children[i], b=s&&s.querySelector&&s.querySelector('[data-pick]');
+    if(b && s.id!=='request'){ hint.hidden=false; b.classList.add('pulse'); hinted=true; } };
+  deckEl.addEventListener('scroll',()=>{ clearTimeout(watchHint.t); watchHint.t=setTimeout(watchHint,250); },{passive:true});
   // size options follow the type (same as the site)
   const SIZES={"Hotel":["Number of rooms",["1–19 rooms","20–29 rooms","30–49 rooms","50–99 rooms","100+ rooms"]],"Resort":["Number of rooms",["1–19 rooms","20–29 rooms","30–49 rooms","50–99 rooms","100+ rooms"]],"Boutique hotel":["Number of rooms",["1–19 rooms","20–29 rooms","30–49 rooms","50–99 rooms","100+ rooms"]],"Villas":["Number of villas you manage",["1 villa","2–4 villas","5–10 villas","10+ villas"]],"Beach club":["Number of sunbeds",["Under 50 sunbeds","50–100 sunbeds","100–200 sunbeds","200+ sunbeds"]],"Yacht":["Number of yachts",["1 yacht","2–5 yachts","6+ yachts"]],"Rooms to let / apartments":["Number of units",["1–5 units","6–19 units","20+ units"]],"Other":["Number of units",["1–5 units","6–19 units","20+ units"]]};
   const type=document.getElementById('rq-type'), size=document.getElementById('rq-size');

@@ -128,7 +128,9 @@ html,body{height:100%;overflow:hidden}
 .split .grid.g2 img{max-height:26vh;width:100%}
 @media (max-width:860px){
   .split{grid-template-rows:40svh auto;height:auto;min-height:100svh}
-  .split .media{aspect-ratio:auto;min-height:0;height:40svh}
+  .split .media{aspect-ratio:auto;min-height:0;height:min(50svh,118vw);width:100%}
+  .split.divider .media,.split.statement .media{height:min(64svh,123vw)}
+  .split{grid-template-rows:auto auto}
   .split.divider .media,.split.statement .media{order:-1}
   .split .text{padding:22px 20px 84px;justify-content:flex-start}
   .split .text h2{font-size:28px;margin-bottom:10px}.split .text h1{font-size:34px}

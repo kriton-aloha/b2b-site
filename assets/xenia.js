@@ -34,7 +34,7 @@
         'alt="Sun of a Beach Hospitality στη XENIA, 21–23 Νοεμβρίου 2026, Metropolitan Expo, Hall 3, Booth A8">' +
       '<div class="xn-modal__body">' +
         '<p class="xn-modal__eyebrow">XENIA 2026</p>' +
-        '<h2 class="xn-modal__title">Σας περιμένουμε στο περίπτερό μας</h2>' +
+        '<h2 class="xn-modal__title">Θα χαρούμε να σας δούμε στη XENIA</h2>' +
         '<p class="xn-modal__text">Γνωρίστε από κοντά τις προτάσεις μας για πετσέτες πισίνας και δώρα για τους επισκέπτες σας, και ας συζητήσουμε τις ανάγκες σας για τη νέα σεζόν.</p>' +
         '<ul class="xn-modal__facts">' +
           '<li><span>Πότε</span>21–23 Νοεμβρίου 2026, 10:00–18:00</li>' +

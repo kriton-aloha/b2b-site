@@ -156,6 +156,14 @@ html,body{height:100%;overflow:hidden}
 .brandmark{position:fixed;left:clamp(14px,3vw,32px);bottom:clamp(14px,3vh,30px);z-index:29;height:30px;opacity:.9;pointer-events:none}
 @media (max-width:860px){.brandmark{display:none}}
 
+
+.card img.cut,.split .media img.cut{object-fit:contain;background:transparent;padding:6px}
+.split .media img.cut{background:#fff}
+.g6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.g6 .card img{height:min(34vh,380px)}
+.bags2{max-width:900px}
+@media (max-width:980px){.g6{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:860px){.g6 .card img{height:13svh}.g6 .card p{font-size:12px}}
 /* ===== Selection + request ===== */
 .hint{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(clamp(12px,3vh,28px) + 64px);z-index:32;width:min(440px,calc(100vw - 28px));background:var(--ink);color:var(--paper);border-radius:14px;padding:16px 18px;box-shadow:0 8px 28px rgba(0,0,0,.25);animation:rise .4s ease-out both}
 .hint b{font-family:var(--serif);font-weight:500;font-size:20px;display:block;margin-bottom:6px}
@@ -240,11 +248,11 @@ html,body{height:100%;overflow:hidden}
 <!-- 01 POOL & BEACH -->
 <section class="split greige divider" id="pool">
   <div class="text rv"><p class="num">01</p><h1>Pool &amp; Beach Towels</h1><p class="lead">From signature pool towels to fully custom jacquards, designed in Greece for daily hotel use.</p></div>
-  <div class="media"><img src="/uploads/2026/07/premium-villa-towels-sunbed.webp" alt="Sun of a Beach towels on sunbeds by the sea" loading="lazy"></div>
+  <div class="media"><video autoplay muted loop playsinline preload="none" poster="/uploads/lookbook/pool-divider_still.webp"><source src="/uploads/lookbook/pool-divider_video.mp4" type="video/mp4"></video></div>
 </section>
 
 <section class="split">
-  <div class="media"><img src="/uploads/2026/07/b2b-hotel-beach-towels-sunbed.webp" alt="Classic Pool Towel with embroidered logo on a sunbed" loading="lazy"></div>
+  <div class="media"><img src="/uploads/lookbook/classic-pool-towel.webp" alt="Model holding a stack of Classic Pool Towels in several colours" loading="lazy"></div>
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Classic Pool Towel</h2>
     <p class="lead">Extra-long pool towel, ready from stock, with your logo embroidered. Indanthrene® vat-dyed for lasting colour.</p>
@@ -255,7 +263,7 @@ html,body{height:100%;overflow:hidden}
 </section>
 
 <section class="split rev">
-  <div class="media"><img src="/uploads/2025/04/deluxe-yacht-sun-of-a-beach-towel.webp" alt="Guest on a yacht with a Sun of a Beach towel" loading="lazy"></div>
+  <div class="media"><img src="/uploads/lookbook/yacht-towel.webp" alt="Model carrying blue Yacht Towels by the pool" loading="lazy"></div>
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Yacht Towel</h2>
     <p class="lead">Soft, generous pool towel with a refined finish and your logo embroidered.</p>
@@ -264,7 +272,7 @@ html,body{height:100%;overflow:hidden}
 </section>
 
 <section class="split">
-  <div class="media"><img src="/uploads/2025/04/custom-brown-pool-towel.webp" alt="Twist Towel on a lounger" loading="lazy"></div>
+  <div class="media"><img src="/uploads/lookbook/twist-towel.webp" alt="Greige Twist Towel with a black border" class="cut" loading="lazy"></div>
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Twist Towel</h2>
     <p class="lead">Pool towel with a twisted-yarn texture and your logo embroidered.</p>
@@ -283,11 +291,11 @@ html,body{height:100%;overflow:hidden}
 
 <section class="split greige statement">
   <div class="text rv"><p class="eyebrow">Custom jacquard · Alemagou, Mykonos</p><p class="quote">Your pattern and logo, woven into every towel.</p></div>
-  <div class="media"><img src="/uploads/2025/04/corporate-gifts-beach-pool-towel-premium.webp" alt="Custom jacquard beach towel" loading="lazy"></div>
+  <div class="media"><video autoplay muted loop playsinline preload="none" poster="/uploads/lookbook/jacquard_feature_video_poster.jpg"><source src="/uploads/lookbook/jacquard_feature_video.mp4" type="video/mp4"></video></div>
 </section>
 
 <section class="split">
-  <div class="media"><img src="/uploads/2025/04/corporate-gifts-custom-beach-pool-towel-luxury.webp" alt="Custom velour beach towel" loading="lazy"></div>
+  <div class="media"><video autoplay muted loop playsinline preload="none" poster="/uploads/lookbook/velour_video_poster.jpg"><source src="/uploads/lookbook/velour_video.mp4" type="video/mp4"></video></div>
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Custom Velour Beach Towel</h2>
     <p class="lead">Velour beach towel made in your own design, with a smooth, soft face.</p>
@@ -296,7 +304,7 @@ html,body{height:100%;overflow:hidden}
 </section>
 
 <section class="split rev">
-  <div class="media"><img src="/uploads/2025/04/customized-blue-pool-towel.webp" alt="Feather Beach Towel with fringes, custom woven with a hotel logo" loading="lazy"></div>
+  <div class="media"><img src="/uploads/lookbook/feather.webp" alt="Feather Beach Towel with fringes, custom woven with a hotel logo" loading="lazy"></div>
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Feather Beach Towel</h2>
     <p class="lead">Lightweight beach towel with fringes, in one of our colours or a custom colour.</p>
@@ -307,7 +315,7 @@ html,body{height:100%;overflow:hidden}
 <!-- 02 WELCOME GIFTS -->
 <section class="split greige divider" id="welcome">
   <div class="text rv"><p class="num">02</p><h1>Welcome Gifts</h1><p class="lead">A welcome they open in the room, and use all summer long. Gift boxes with your message, filled with the pieces of your choice.</p></div>
-  <div class="media"><img src="/uploads/2025/04/sun-of-a-beach-gift-set-hat-candle-mask-pouch.webp" alt="Sun of a Beach welcome gift box" loading="lazy"></div>
+  <div class="media"><img src="/uploads/lookbook/welcome-gifts_divider.webp" alt="Hands holding an open Sun of a Beach welcome gift box" loading="lazy"></div>
 </section>
 
 <section class="split sand">
@@ -322,9 +330,9 @@ html,body{height:100%;overflow:hidden}
 <section><div class="wrap">
   <p class="eyebrow rv">Welcome Gifts</p><h2 class="rv">Waterproof pouches</h2>
   <div class="grid g3">
-    <div class="card rv"><img src="/uploads/2025/04/corporate-gift-luxury-pouches.webp" alt="Passepartout pouch" loading="lazy"><h3>Passepartout</h3><p>31 × 19 cm · waterproof, flat</p></div>
-    <div class="card rv"><img src="/uploads/2025/04/custom-hospitality-gifts-pouches-sleeves.webp" alt="Small Luna terry pouch" loading="lazy"><h3>Small Luna</h3><p>26 × 17 cm · waterproof, half-moon shape</p></div>
-    <div class="card rv"><img src="/uploads/2025/04/black-white-pouch-corporate-gift-womans-hand.webp" alt="Cosmo pouch" loading="lazy"><h3>Cosmo</h3><p>24 × 14 × 11 cm · waterproof, with wrist strap</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_passepartout.webp" alt="Passepartout pouches in several colours" loading="lazy"><h3>Passepartout</h3><p>31 × 19 cm · waterproof, flat</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_luna.webp" alt="Small Luna pouch in rust terry" loading="lazy"><h3>Small Luna</h3><p>26 × 17 cm · waterproof, half-moon shape</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_cosmo.webp" alt="Cosmo pouch in dark grey terry with wrist strap" loading="lazy"><h3>Cosmo</h3><p>24 × 14 × 11 cm · waterproof, with wrist strap</p></div>
   </div>
   <p class="note rv">Lined and waterproof, with your logo embroidered. Passepartout and Small Luna also in velvet or custom canvas.</p>
 </div></section>
@@ -332,9 +340,9 @@ html,body{height:100%;overflow:hidden}
 <section class="sand"><div class="wrap">
   <p class="eyebrow rv">Welcome Gifts</p><h2 class="rv">Sunglasses, caps and hats</h2>
   <div class="grid g3">
-    <div class="card rv"><img src="/uploads/2025/04/luxury-hotel-boutique-summer-essentials.webp" alt="Summer essentials with sunglasses" loading="lazy"><h3>Sunglasses</h3><p>Tortoise or monochrome · classic shape</p></div>
-    <div class="card rv"><img src="/uploads/2025/04/sun-of-a-beach-welcome-gift-woman-hat.webp" alt="Cotton baseball cap with embroidered logo" loading="lazy"><h3>Baseball Cap</h3><p>Cotton · 1 or 2 embroideries</p></div>
-    <div class="card rv"><img src="/uploads/2025/04/luxury-event-gift-bags-hats.webp" alt="Straw hats with printed ribbons" loading="lazy"><h3>Straw Hat</h3><p>Natural straw · ribbon printed with your logo</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/sunglasses.webp" alt="Sunglasses on terry pouches" loading="lazy"><h3>Sunglasses</h3><p>Tortoise or monochrome · classic shape</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/cap.webp" alt="Cotton baseball cap with embroidered logo" loading="lazy"><h3>Baseball Cap</h3><p>Cotton · 1 or 2 embroideries</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/straw-hat.webp" alt="Straw hat with a printed logo ribbon" loading="lazy"><h3>Straw Hat</h3><p>Natural straw · ribbon printed with your logo</p></div>
   </div>
 </div></section>
 
@@ -347,41 +355,52 @@ html,body{height:100%;overflow:hidden}
       <div class="spec"><span>Terry Tote</span><span>40 × 38 × 11 cm, also small</span></div>
       <div class="spec"><span>Standing Canvas Tote</span><span>49 × 34 × 23 cm</span></div>
     </div>
-    <div class="grid g2" style="margin-top:22px"><img src="/uploads/2025/04/grey-bag-tassels-beach-use-corporate-gift.webp" alt="Terry tote bag" style="border-radius:6px;aspect-ratio:1;object-fit:cover" loading="lazy"><img src="/uploads/2025/04/stylish-blue-white-tote-bag-corporate-gift.webp" alt="Canvas tote" style="border-radius:6px;aspect-ratio:1;object-fit:cover" loading="lazy"></div>
+    <div class="grid g2" style="margin-top:22px"><img src="/uploads/lookbook/tote_terry.webp" alt="Blue terry tote bag" style="aspect-ratio:1;object-fit:contain" loading="lazy"><img src="/uploads/lookbook/tote_canvas.webp" alt="Blue and white striped standing canvas tote" style="aspect-ratio:1;object-fit:contain" loading="lazy"></div>
   </div>
 </section>
 
 <section class="sand"><div class="wrap">
-  <p class="eyebrow rv">Welcome Gifts · Bags</p><h2 class="rv">Burlap &amp; woven fabric bags</h2>
-  <p class="lead rv">Natural burlap and light woven fabrics, printed with your logo.</p>
-  <div class="grid g3">
-    <div class="card rv"><img src="/uploads/2025/04/corporate-gift-branded-bag-loreal-client.webp" alt="Burlap bag with printed logo" loading="lazy"><h3>Burlap Bag</h3><p>45 × 35 cm</p></div>
-    <div class="card rv"><img src="/uploads/2026/01/luxury-hospitality-welcome-gift-bag.webp" alt="Resort burlap tote with black handles" loading="lazy"><h3>Resort Burlap Bag</h3><p>38 × 38 × 12.5 cm, contrast handles</p></div>
-    <div class="card rv"><img src="/uploads/2025/04/beige-aegean-branded-bag-luxury-towel.webp" alt="Woven fabric bag with printed logo" loading="lazy"><h3>Woven fabric bags</h3><p>Gaia · Breeze · Porto · Riviera · Ammos: flat bags 45 × 35 cm. Terra: tote 38 × 38 × 12.5 cm.</p></div>
+  <p class="eyebrow rv">Welcome Gifts · Bags</p><h2 class="rv">Burlap bags</h2>
+  <p class="lead rv">Natural burlap, printed with your logo.</p>
+  <div class="grid g2 bags2">
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/burlap.webp" alt="Natural burlap bag printed with a hotel logo" loading="lazy"><h3>Burlap Bag</h3><p>45 × 35 cm</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/burlap_resort.webp" alt="Resort burlap tote with black handles" loading="lazy"><h3>Resort Burlap Bag</h3><p>38 × 38 × 12.5 cm, contrast handles</p></div>
+  </div>
+</div></section>
+<section><div class="wrap">
+  <p class="eyebrow rv">Welcome Gifts · Bags</p><h2 class="rv">Woven fabric bags</h2>
+  <p class="lead rv">Light woven fabrics, printed with your logo.</p>
+  <div class="grid g6">
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_gaia.webp" alt="Gaia woven fabric bag" loading="lazy"><h3>Gaia</h3><p>Flat bag · 45 × 35 cm</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_breeze.webp" alt="Breeze woven fabric bag" loading="lazy"><h3>Breeze</h3><p>Flat bag · 45 × 35 cm</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_porto.webp" alt="Porto woven fabric bag" loading="lazy"><h3>Porto</h3><p>Flat bag · 45 × 35 cm</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_riviera.webp" alt="Riviera woven fabric bag" loading="lazy"><h3>Riviera</h3><p>Flat bag · 45 × 35 cm</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_ammos.webp" alt="Ammos woven fabric bag" loading="lazy"><h3>Ammos</h3><p>Flat bag · 45 × 35 cm</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_terra.webp" alt="Terra woven fabric bag" loading="lazy"><h3>Terra</h3><p>Tote · 38 × 38 × 12.5 cm</p></div>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <p class="eyebrow rv">Welcome Gifts</p><h2 class="rv">Scarves in your own design</h2>
   <div class="grid g2">
-    <div class="textcard rv"><h3>Silk Scarves</h3><p class="small" style="margin-top:8px">52 × 52 or 64 × 64 cm · 12–14 momme, hand-rolled edges · 1- or 2-side print</p></div>
-    <div class="textcard rv"><h3>Satin-feel Scarves</h3><p class="small" style="margin-top:8px">43 × 43, 52 × 52 or 64 × 64 cm · silk look and feel · 1- or 2-side print</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/scarf_silk.webp" alt="Pure silk scarf printed in blue" loading="lazy"><h3>Silk Scarves</h3><p>52 × 52 or 64 × 64 cm · 12–14 momme, hand-rolled edges · 1- or 2-side print</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/scarf_satin.webp" alt="Satin-feel scarf in a gift box" loading="lazy"><h3>Satin-feel Scarves</h3><p>43 × 43, 52 × 52 or 64 × 64 cm · silk look and feel · 1- or 2-side print</p></div>
   </div>
 </div></section>
 
 <section class="split statement">
   <div class="text rv"><p class="eyebrow">Designed in Greece</p><p class="quote">Made for your pool, your beach, and every walk in between.</p></div>
-  <div class="media"><img src="/uploads/2024/11/Sun-of-a-Beach-B2B-About-img01.webp" alt="Guest by the sea with a striped beach towel" loading="lazy"></div>
+  <div class="media"><video autoplay muted loop playsinline preload="none" poster="/uploads/lookbook/between-welcome-and-inroom_still.webp"><source src="/uploads/lookbook/between-welcome-and-inroom_video.mp4" type="video/mp4"></video></div>
 </section>
 
 <!-- 03 IN-ROOM -->
 <section class="split greige divider" id="inroom">
   <div class="text rv"><p class="num">03</p><h1>In-Room Towels &amp; Bathrobes</h1><p class="lead">Classic whites, bathrobes and kimonos, with your logo.</p></div>
-  <div class="media"><img src="/uploads/2025/04/white-luxury-bathrobe-hotel-spa.webp" alt="Guest in a white bathrobe" loading="lazy"></div>
+  <div class="media"><img src="/uploads/lookbook/in-room_divider.webp" alt="Guest in a white bathrobe by a bathtub" loading="lazy"></div>
 </section>
 
 <section class="split">
-  <div class="media"><img src="/uploads/2025/04/white-spa-towels-hotel-luxury-collection.webp" alt="Folded white hotel towels" loading="lazy"></div>
+  <div class="media"><img src="/uploads/lookbook/white-towels.webp" alt="Folded white hotel towels" loading="lazy"></div>
   <div class="text rv">
     <p class="eyebrow">In-Room</p><h2>White Towel Collection</h2>
     <p class="lead">Hotel-quality white towels, ready from stock, with your logo embroidered.</p>
@@ -389,20 +408,17 @@ html,body{height:100%;overflow:hidden}
   </div>
 </section>
 
-<section class="split rev">
-  <div class="media"><img src="/uploads/2025/04/luxury-hotel-boutique-bathrobes-towels.webp" alt="Bathrobes and towels on a rail" loading="lazy"></div>
-  <div class="text rv">
-    <p class="eyebrow">In-Room</p><h2>Bathrobes</h2>
-    <div class="specs" style="margin-top:6px">
-      <div class="spec"><span>Piquet Bathrobe</span><span>L / XL · 260 gsm · light, for spa and warm climates</span></div>
-      <div class="spec"><span>Fluffy Bathrobe</span><span>Large · 450 gsm · thick terry, true hotel feel</span></div>
-      <div class="spec"><span>Blue-Stitch Bathrobe</span><span>One size · 350 gsm · white with blue stitching</span></div>
-    </div>
+<section><div class="wrap">
+  <p class="eyebrow rv">In-Room</p><h2 class="rv">Bathrobes</h2>
+  <div class="grid g3">
+    <div class="card rv"><img src="/uploads/lookbook/bathrobe_piquet.webp" alt="Woman in a white piquet bathrobe" loading="lazy"><h3>Piquet Bathrobe</h3><p>L / XL · 260 gsm · light, for spa and warm climates</p></div>
+    <div class="card rv"><img src="/uploads/lookbook/bathrobe_fluffy.webp" alt="Woman in a white fluffy terry bathrobe" loading="lazy"><h3>Fluffy Bathrobe</h3><p>Large · 450 gsm · thick terry, true hotel feel</p></div>
+    <div class="card rv"><img src="/uploads/lookbook/bathrobe_blue-stitch.webp" alt="Woman in a white bathrobe with blue stitching" loading="lazy"><h3>Blue-Stitch Bathrobe</h3><p>One size · 350 gsm · white with blue stitching</p></div>
   </div>
-</section>
+</div></section>
 
 <section class="split">
-  <div class="media"><img src="/uploads/2025/04/green-linen-bathrobe-hotel-luxury-collection.webp" alt="Linen kimono" loading="lazy"></div>
+  <div class="media"><img src="/uploads/lookbook/linen-kimono.webp" alt="Woman in a rust linen kimono in a hotel room at dusk" loading="lazy"></div>
   <div class="text rv">
     <p class="eyebrow">In-Room</p><h2>Linen Kimono</h2>
     <p class="lead">Pure linen kimono, light and elegant.</p>
@@ -513,7 +529,7 @@ update(); deck.focus({preventScroll:true});
     const h2=s.querySelector('.text h2'), specs=s.querySelector('.text .specs');
     if(!h2||!specs) return;
     const name=h2.textContent.trim();
-    if(/^(Totes|Bathrobes)$/.test(name)){ specs.querySelectorAll('.spec').forEach(r=>{ const n=r.firstElementChild.textContent.trim(); r.appendChild(btn(n,'xs')); }); }
+    if(/^(Totes)$/.test(name)){ specs.querySelectorAll('.spec').forEach(r=>{ const n=r.firstElementChild.textContent.trim(); r.appendChild(btn(n,'xs')); }); }
     else { const b=btn(name), l=s.querySelector('.text .lead'); (l||h2).after(b); b.style.marginTop='0'; b.style.marginBottom='18px'; }
   });
   document.querySelectorAll('div.card h3, .textcard h3').forEach(h=>{ h.parentNode.appendChild(btn(h.textContent.trim(),'sm')); });

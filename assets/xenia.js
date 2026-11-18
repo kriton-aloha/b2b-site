@@ -18,7 +18,7 @@
     '<button type="button" class="xn-bar__info" aria-haspopup="dialog">' +
       '<b>XENIA 2026</b><span>21–23 Νοεμβρίου · Hall 3, Booth A8</span>' +
     '</button>' +
-    '<a class="xn-bar__cta" data-xn="xenia" href="' + XENIA + '" target="_blank" rel="noopener">Κλείστε ραντεβού</a>';
+    '<button type="button" class="xn-bar__cta" aria-haspopup="dialog">Κλείστε ραντεβού</button>';
 
   var modal = document.createElement("div");
   modal.className = "xn-modal";
@@ -71,6 +71,7 @@
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
   bar.querySelector(".xn-bar__info").addEventListener("click", function () { open("bar"); });
+  bar.querySelector(".xn-bar__cta").addEventListener("click", function () { open("bar_button"); });
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a[data-xn]");
     if (a) { markSeen(); track("xenia_booking_click", { xenia_booking: a.getAttribute("data-xn") }); }

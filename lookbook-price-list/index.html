@@ -241,11 +241,22 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
 .split .media.mosaic img{position:static;inset:auto;width:100%;height:100%;min-height:0;aspect-ratio:auto;object-fit:cover}
 @media (max-width:860px){.split.divider .media.mosaic{height:min(64svh,123vw)}.split .media.mosaic img{height:100%}}
 /* indicative price ranges */
-.price{margin-top:14px;font-family:var(--serif);font-size:clamp(20px,1.7vw,26px);color:var(--ink);line-height:1.2}
+.price{margin-top:14px;line-height:1.2}
 .price small{display:block;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:4px}
 .card .price{margin-top:8px;font-size:clamp(17px,1.3vw,20px);color:var(--ink)}
 .card .price small{font-size:10.5px}
 @media (max-width:860px){.price{font-size:19px;margin-top:10px}.card .price{font-size:15px;margin-top:4px}.card .price small{font-size:9.5px;letter-spacing:.06em}}
+/* price tiers */
+.price .tiers{display:grid;gap:0;border-top:1px solid var(--line);max-width:420px}
+.price .tiers div{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:5px 0;border-bottom:1px solid var(--line)}
+.price .tiers span{font-family:var(--sans);font-size:13px;color:#6B6658}
+.price .tiers b{font-family:var(--serif);font-weight:500;font-size:clamp(17px,1.4vw,21px);color:var(--ink);white-space:nowrap}
+.price .tiers em{font-style:normal;color:#9A9384}
+.card .price .tiers div{padding:3px 0}
+.card .price .tiers span{font-size:11px}
+.card .price .tiers b{font-size:clamp(13px,1.05vw,16px)}
+.g6 .card .price .tiers div{flex-direction:column;align-items:flex-start;gap:0}
+@media (max-width:860px){.price .tiers span{font-size:11px}.price .tiers b{font-size:15px}.card .price .tiers b{font-size:12.5px}.card .price .tiers span{font-size:9.5px}.card .price .tiers div{padding:2px 0}.g6 .card .price .tiers div{flex-direction:row;align-items:baseline}}
 </style>
 </head>
 <body>
@@ -302,7 +313,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Classic Pool Towel</h2>
     <p class="lead">Extra-long pool towel, ready from stock, with your logo embroidered. Indanthrene® vat-dyed for lasting colour.</p>
-    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>460 gsm</span></div></div><p class="price">€14.50 – €25.50 <small>per pc · excl. VAT · from stock</small></p>
+    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>460 gsm</span></div></div><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€16.90 – €25.50</b></div><div><span>500–999 pcs</span><b>€15.90 – €23.90</b></div><div><span>1,000+ pcs</span><b>€14.50 – €21.90</b></div></div><small>per pc · excl. VAT</small></div>
     <p class="sub">Colours</p>
     <div class="sw"><div><i style="background:#C9BBA6"></i>Greige</div><div><i style="background:#1F2D4F"></i>Deep Blue</div><div><i style="background:#4A4A47"></i>Graphite</div><div><i style="background:#2F5D9E"></i>Indigo</div><div><i style="background:#E7B53C"></i>Sunflower</div><div><i style="background:#A9573A"></i>Coppertone</div></div>
   </div>
@@ -313,7 +324,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Yacht Towel</h2>
     <p class="lead">Soft, generous pool towel with a refined finish and your logo embroidered.</p>
-    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>450 gsm</span></div></div><p class="price">€27.50 – €35.90 <small>per pc · excl. VAT · MOQ 100</small></p>
+    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>450 gsm</span></div></div><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€35.90</b></div><div><span>500–999 pcs</span><b>€31.90</b></div><div><span>1,000+ pcs</span><b>€27.50</b></div></div><small>per pc · excl. VAT · MOQ 100</small></div>
   </div>
 </section>
 
@@ -322,7 +333,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Twist Towel</h2>
     <p class="lead">Pool towel with a twisted-yarn texture and your logo embroidered.</p>
-    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>450 gsm</span></div></div><p class="price">€25.90 – €29.90 <small>per pc · excl. VAT · MOQ 100</small></p>
+    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>450 gsm</span></div></div><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€29.90</b></div><div><span>500–999 pcs</span><b>€27.90</b></div><div><span>1,000+ pcs</span><b>€25.90</b></div></div><small>per pc · excl. VAT · MOQ 100</small></div>
   </div>
 </section>
 
@@ -331,7 +342,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Custom Jacquard Towel</h2>
     <p class="lead">Your own pattern and logo woven into the towel, finished with fringes. In reactive or Indanthrene® dyes.</p>
-    <div class="specs"><div class="spec"><span>95 × 160 cm</span><span>360 gsm</span></div><div class="spec"><span>95 × 180 cm</span><span>360 gsm</span></div><div class="spec"><span>95 × 180 cm</span><span>500 gsm</span></div></div><p class="price">€10.50 – €22.50 <small>per pc · excl. VAT · MOQ 500</small></p>
+    <div class="specs"><div class="spec"><span>95 × 160 cm</span><span>360 gsm</span></div><div class="spec"><span>95 × 180 cm</span><span>360 gsm</span></div><div class="spec"><span>95 × 180 cm</span><span>500 gsm</span></div></div><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b><em>—</em></b></div><div><span>500–999 pcs</span><b>€11.50 – €22.50</b></div><div><span>1,000+ pcs</span><b>€10.50 – €20.50</b></div></div><small>per pc · excl. VAT · MOQ 500</small></div>
   </div>
 </section>
 
@@ -345,7 +356,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Custom Velour Beach Towel</h2>
     <p class="lead">Velour beach towel made in your own design, with a smooth, soft face.</p>
-    <div class="specs"><div class="spec"><span>Size</span><span>100 × 180 cm</span></div><div class="spec"><span>Weight</span><span>500 gsm</span></div></div><p class="price">€18.90 – €20.50 <small>per pc · excl. VAT · MOQ 500</small></p>
+    <div class="specs"><div class="spec"><span>Size</span><span>100 × 180 cm</span></div><div class="spec"><span>Weight</span><span>500 gsm</span></div></div><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b><em>—</em></b></div><div><span>500–999 pcs</span><b>€20.50</b></div><div><span>1,000+ pcs</span><b>€18.90</b></div></div><small>per pc · excl. VAT · MOQ 500</small></div>
   </div>
 </section>
 
@@ -354,7 +365,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Feather Beach Towel</h2>
     <p class="lead">Lightweight beach towel with fringes, in one of our colours or a custom colour.</p>
-    <div class="specs"><div class="spec"><span>95 × 180 cm</span><span>260 gsm</span></div><div class="spec"><span>95 × 160 cm</span><span>260 gsm</span></div></div><p class="price">€13.50 – €17.50 <small>per pc · excl. VAT · MOQ 100</small></p>
+    <div class="specs"><div class="spec"><span>95 × 180 cm</span><span>260 gsm</span></div><div class="spec"><span>95 × 160 cm</span><span>260 gsm</span></div></div><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€15.90 – €17.50</b></div><div><span>500–999 pcs</span><b>€14.90 – €16.50</b></div><div><span>1,000+ pcs</span><b>€13.50 – €15.50</b></div></div><small>per pc · excl. VAT · MOQ 100</small></div>
   </div>
 </section>
 
@@ -376,9 +387,9 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
 <section><div class="wrap">
   <p class="eyebrow rv">Welcome Gifts</p><h2 class="rv">Waterproof pouches</h2>
   <div class="grid g3">
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_passepartout.webp" alt="Passepartout pouches in several colours" loading="lazy"><h3>Passepartout</h3><p>31 × 19 cm · waterproof, flat</p><p class="price">€12.50 – €16.50 <small>per pc · excl. VAT · MOQ 100</small></p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_luna.webp" alt="Small Luna pouch in rust terry" loading="lazy"><h3>Small Luna</h3><p>26 × 17 cm · waterproof, half-moon shape</p><p class="price">€13.90 – €16.90 <small>per pc · excl. VAT · MOQ 100</small></p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_cosmo.webp" alt="Cosmo pouch in dark grey terry with wrist strap" loading="lazy"><h3>Cosmo</h3><p>24 × 14 × 11 cm · waterproof, with wrist strap</p><p class="price">€14.50 – €17.50 <small>per pc · excl. VAT · MOQ 100</small></p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_passepartout.webp" alt="Passepartout pouches in several colours" loading="lazy"><h3>Passepartout</h3><p>31 × 19 cm · waterproof, flat</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€15.90 – €16.50</b></div><div><span>500–999 pcs</span><b>€14.50</b></div><div><span>1,000+ pcs</span><b>€12.50 – €12.90</b></div></div><small>per pc · excl. VAT · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_luna.webp" alt="Small Luna pouch in rust terry" loading="lazy"><h3>Small Luna</h3><p>26 × 17 cm · waterproof, half-moon shape</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€16.90</b></div><div><span>500–999 pcs</span><b>€15.50</b></div><div><span>1,000+ pcs</span><b>€13.90</b></div></div><small>per pc · excl. VAT · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_cosmo.webp" alt="Cosmo pouch in dark grey terry with wrist strap" loading="lazy"><h3>Cosmo</h3><p>24 × 14 × 11 cm · waterproof, with wrist strap</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€17.50</b></div><div><span>500–999 pcs</span><b>€15.90</b></div><div><span>1,000+ pcs</span><b>€14.50</b></div></div><small>per pc · excl. VAT · MOQ 100</small></div></div>
   </div>
   <p class="note rv">Lined and waterproof, with your logo embroidered. Passepartout and Small Luna also in velvet or custom canvas.</p>
 </div></section>
@@ -386,9 +397,9 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
 <section class="sand"><div class="wrap">
   <p class="eyebrow rv">Welcome Gifts</p><h2 class="rv">Sunglasses, caps and hats</h2>
   <div class="grid g3">
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/sunglasses.webp" alt="Sunglasses on terry pouches" loading="lazy"><h3>Sunglasses</h3><p>Tortoise or monochrome · classic shape</p><p class="price">€11.50 – €14.50 <small>per pc · excl. VAT · MOQ 200</small></p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/cap.webp" alt="Cotton baseball cap with embroidered logo" loading="lazy"><h3>Baseball Cap</h3><p>Cotton · 1 or 2 embroideries</p><p class="price">€7.50 – €12.50 <small>per pc · excl. VAT · from stock</small></p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/straw-hat.webp" alt="Straw hat with a printed logo ribbon" loading="lazy"><h3>Straw Hat</h3><p>Natural straw · ribbon printed with your logo</p><p class="price">€8.90 – €14.50 <small>per pc · excl. VAT · MOQ 48</small></p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/sunglasses.webp" alt="Sunglasses on terry pouches" loading="lazy"><h3>Sunglasses</h3><p>Tortoise or monochrome · classic shape</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€14.50</b></div><div><span>500–999 pcs</span><b>€12.50</b></div><div><span>1,000+ pcs</span><b>€11.50</b></div></div><small>per pc · excl. VAT · MOQ 200</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/cap.webp" alt="Cotton baseball cap with embroidered logo" loading="lazy"><h3>Baseball Cap</h3><p>Cotton · 1 or 2 embroideries</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€9.50 – €12.50</b></div><div><span>500–999 pcs</span><b>€8.50 – €10.50</b></div><div><span>1,000+ pcs</span><b>€7.50 – €9.50</b></div></div><small>per pc · excl. VAT · from stock</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/straw-hat.webp" alt="Straw hat with a printed logo ribbon" loading="lazy"><h3>Straw Hat</h3><p>Natural straw · ribbon printed with your logo</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€11.50 – €14.50</b></div><div><span>500–999 pcs</span><b>€9.90 – €13.50</b></div><div><span>1,000+ pcs</span><b>€8.90 – €11.90</b></div></div><small>per pc · excl. VAT · MOQ 48</small></div></div>
   </div>
 </div></section>
 
@@ -396,10 +407,10 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="media"><img src="/uploads/2025/04/hospitality-welcome-gifts-sun-of-a-beach-woman-departure-bag.webp" alt="Guest at hotel reception with a branded cotton mesh bag" loading="lazy"><span class="media-cap">Cotton Mesh Bag</span></div>
   <div class="text rv">
     <p class="eyebrow">Welcome Gifts · Bags</p><h2>Tote Bags</h2>
-    <div class="textcard tote-mesh"><h3>Cotton Mesh Bag</h3><p>In the photo · light cotton mesh, 1-colour logo print</p><p class="price">€6.90 – €8.90 <small>per pc · excl. VAT · MOQ 200</small></p></div>
+    <div class="textcard tote-mesh"><h3>Cotton Mesh Bag</h3><p>In the photo · light cotton mesh, 1-colour logo print</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€8.90</b></div><div><span>500–999 pcs</span><b>€7.90</b></div><div><span>1,000+ pcs</span><b>€6.90</b></div></div><small>per pc · excl. VAT · MOQ 200</small></div></div>
     <div class="grid g2 totes">
-      <div class="card"><img class="cut" src="/uploads/lookbook/tote_terry.webp" alt="Blue terry tote bag" loading="lazy"><h3>Terry Tote</h3><p>40 × 38 × 11 cm, also small</p><p class="price">€18.50 – €28.50 <small>per pc · excl. VAT · MOQ 60</small></p></div>
-      <div class="card"><img class="cut" src="/uploads/lookbook/tote_canvas.webp" alt="Blue and white striped standing canvas tote" loading="lazy"><h3>Standing Canvas Tote</h3><p>49 × 34 × 23 cm</p><p class="price">€42.50 – €52.50 <small>per pc · excl. VAT · MOQ 200</small></p></div>
+      <div class="card"><img class="cut" src="/uploads/lookbook/tote_terry.webp" alt="Blue terry tote bag" loading="lazy"><h3>Terry Tote</h3><p>40 × 38 × 11 cm, also small</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€25.50 – €28.50</b></div><div><span>500–999 pcs</span><b>€22.50 – €24.50</b></div><div><span>1,000+ pcs</span><b>€18.50 – €20.50</b></div></div><small>per pc · excl. VAT · MOQ 60</small></div></div>
+      <div class="card"><img class="cut" src="/uploads/lookbook/tote_canvas.webp" alt="Blue and white striped standing canvas tote" loading="lazy"><h3>Standing Canvas Tote</h3><p>49 × 34 × 23 cm</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€52.50</b></div><div><span>500–999 pcs</span><b>€47.90</b></div><div><span>1,000+ pcs</span><b>€42.50</b></div></div><small>per pc · excl. VAT · MOQ 200</small></div></div>
     </div>
   </div>
 </section>
@@ -408,28 +419,28 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <p class="eyebrow rv">Welcome Gifts · Bags</p><h2 class="rv">Burlap bags</h2>
   <p class="lead rv">Natural burlap, printed with your logo.</p>
   <div class="grid g2 bags2">
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/burlap.webp" alt="Natural burlap bag printed with a hotel logo" loading="lazy"><h3>Burlap Bag</h3><p>45 × 35 cm</p><p class="price">€4.20 – €5.50 <small>per pc · excl. VAT · MOQ 150</small></p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/burlap_resort.webp" alt="Resort burlap tote with black handles" loading="lazy"><h3>Resort Burlap Bag</h3><p>38 × 38 × 12.5 cm, contrast handles</p><p class="price">€6.50 – €7.90 <small>per pc · excl. VAT · MOQ 150</small></p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/burlap.webp" alt="Natural burlap bag printed with a hotel logo" loading="lazy"><h3>Burlap Bag</h3><p>45 × 35 cm</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€5.50</b></div><div><span>500–999 pcs</span><b>€4.50</b></div><div><span>1,000+ pcs</span><b>€4.20</b></div></div><small>per pc · excl. VAT · MOQ 150</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/burlap_resort.webp" alt="Resort burlap tote with black handles" loading="lazy"><h3>Resort Burlap Bag</h3><p>38 × 38 × 12.5 cm, contrast handles</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€7.90</b></div><div><span>500–999 pcs</span><b>€6.90</b></div><div><span>1,000+ pcs</span><b>€6.50</b></div></div><small>per pc · excl. VAT · MOQ 150</small></div></div>
   </div>
 </div></section>
 <section><div class="wrap">
   <p class="eyebrow rv">Welcome Gifts · Bags</p><h2 class="rv">Woven fabric bags</h2>
   <p class="lead rv">Light woven fabrics, printed with your logo.</p>
   <div class="grid g6">
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_gaia.webp" alt="Gaia woven fabric bag" loading="lazy"><h3>Gaia</h3><p>Flat bag · 45 × 35 cm</p><p class="price">€8.50 – €9.90 <small>per pc · excl. VAT · MOQ 100</small></p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_breeze.webp" alt="Breeze woven fabric bag" loading="lazy"><h3>Breeze</h3><p>Flat bag · 45 × 35 cm</p><p class="price">€8.50 – €9.90 <small>per pc · excl. VAT · MOQ 100</small></p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_porto.webp" alt="Porto woven fabric bag" loading="lazy"><h3>Porto</h3><p>Flat bag · 45 × 35 cm</p><p class="price">€6.50 – €7.90 <small>per pc · excl. VAT · MOQ 100</small></p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_riviera.webp" alt="Riviera woven fabric bag" loading="lazy"><h3>Riviera</h3><p>Flat bag · 45 × 35 cm</p><p class="price">€5.50 – €6.90 <small>per pc · excl. VAT · MOQ 100</small></p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_ammos.webp" alt="Ammos woven fabric bag" loading="lazy"><h3>Ammos</h3><p>Flat bag · 45 × 35 cm</p><p class="price">€7.90 – €9.50 <small>per pc · excl. VAT · MOQ 100</small></p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_terra.webp" alt="Terra woven fabric bag" loading="lazy"><h3>Terra</h3><p>Tote · 38 × 38 × 12.5 cm</p><p class="price">€8.50 – €10.50 <small>per pc · excl. VAT · MOQ 100</small></p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_gaia.webp" alt="Gaia woven fabric bag" loading="lazy"><h3>Gaia</h3><p>Flat bag · 45 × 35 cm</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€9.90</b></div><div><span>500–999 pcs</span><b>€8.90</b></div><div><span>1,000+ pcs</span><b>€8.50</b></div></div><small>per pc · excl. VAT · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_breeze.webp" alt="Breeze woven fabric bag" loading="lazy"><h3>Breeze</h3><p>Flat bag · 45 × 35 cm</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€9.90</b></div><div><span>500–999 pcs</span><b>€8.90</b></div><div><span>1,000+ pcs</span><b>€8.50</b></div></div><small>per pc · excl. VAT · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_porto.webp" alt="Porto woven fabric bag" loading="lazy"><h3>Porto</h3><p>Flat bag · 45 × 35 cm</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€7.90</b></div><div><span>500–999 pcs</span><b>€6.50</b></div><div><span>1,000+ pcs</span><b><em>—</em></b></div></div><small>per pc · excl. VAT · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_riviera.webp" alt="Riviera woven fabric bag" loading="lazy"><h3>Riviera</h3><p>Flat bag · 45 × 35 cm</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€6.90</b></div><div><span>500–999 pcs</span><b>€5.90</b></div><div><span>1,000+ pcs</span><b>€5.50</b></div></div><small>per pc · excl. VAT · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_ammos.webp" alt="Ammos woven fabric bag" loading="lazy"><h3>Ammos</h3><p>Flat bag · 45 × 35 cm</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€9.50</b></div><div><span>500–999 pcs</span><b>€8.90</b></div><div><span>1,000+ pcs</span><b>€7.90</b></div></div><small>per pc · excl. VAT · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_terra.webp" alt="Terra woven fabric bag" loading="lazy"><h3>Terra</h3><p>Tote · 38 × 38 × 12.5 cm</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€10.50</b></div><div><span>500–999 pcs</span><b>€9.50</b></div><div><span>1,000+ pcs</span><b>€8.50</b></div></div><small>per pc · excl. VAT · MOQ 100</small></div></div>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <p class="eyebrow rv">Welcome Gifts</p><h2 class="rv">Scarves in your own design</h2>
   <div class="grid g2">
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/scarf_silk.webp" alt="Pure silk scarf printed in blue" loading="lazy"><h3>Silk Scarves</h3><p>52 × 52 or 64 × 64 cm · 12–14 momme, hand-rolled edges · 1- or 2-side print</p><p class="price">€15.90 – €33.50 <small>per pc · excl. VAT · MOQ 20</small></p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/scarf_satin.webp" alt="Satin-feel scarf in a gift box" loading="lazy"><h3>Satin-feel Scarves</h3><p>43 × 43, 52 × 52 or 64 × 64 cm · silk look and feel · 1- or 2-side print</p><p class="price">€4.90 – €16.50 <small>per pc · excl. VAT · MOQ 50</small></p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/scarf_silk.webp" alt="Pure silk scarf printed in blue" loading="lazy"><h3>Silk Scarves</h3><p>52 × 52 or 64 × 64 cm · 12–14 momme, hand-rolled edges · 1- or 2-side print</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€20.50 – €33.50</b></div><div><span>500–999 pcs</span><b>€17.90 – €28.90</b></div><div><span>1,000+ pcs</span><b>€15.90 – €25.50</b></div></div><small>per pc · excl. VAT · MOQ 20</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/scarf_satin.webp" alt="Satin-feel scarf in a gift box" loading="lazy"><h3>Satin-feel Scarves</h3><p>43 × 43, 52 × 52 or 64 × 64 cm · silk look and feel · 1- or 2-side print</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€6.50 – €16.50</b></div><div><span>500–999 pcs</span><b>€5.50 – €14.50</b></div><div><span>1,000+ pcs</span><b>€4.90 – €12.50</b></div></div><small>per pc · excl. VAT · MOQ 50</small></div></div>
   </div>
 </div></section>
 
@@ -449,16 +460,16 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">In-Room</p><h2>White Towel Collection</h2>
     <p class="lead">Hotel-quality white towels, ready from stock, with your logo embroidered.</p>
-    <div class="specs"><div class="spec"><span>Bath mat</span><span>50 × 80 cm · 700 gsm</span></div><div class="spec"><span>Body towel</span><span>90 × 160 cm · 600 gsm</span></div><div class="spec"><span>Face &amp; hair towel</span><span>50 × 100 cm · 600 gsm</span></div><div class="spec"><span>Hand towel</span><span>30 × 30 cm · 500 gsm</span></div></div><p class="price">€1.00 – €13.50 <small>per pc · excl. VAT · from stock</small></p>
+    <div class="specs"><div class="spec"><span>Bath mat</span><span>50 × 80 cm · 700 gsm</span></div><div class="spec"><span>Body towel</span><span>90 × 160 cm · 600 gsm</span></div><div class="spec"><span>Face &amp; hair towel</span><span>50 × 100 cm · 600 gsm</span></div><div class="spec"><span>Hand towel</span><span>30 × 30 cm · 500 gsm</span></div></div><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€1.20 – €13.50</b></div><div><span>500–999 pcs</span><b>€1.10 – €11.90</b></div><div><span>1,000+ pcs</span><b>€1.00 – €10.50</b></div></div><small>per pc · excl. VAT · from stock</small></div>
   </div>
 </section>
 
 <section><div class="wrap">
   <p class="eyebrow rv">In-Room</p><h2 class="rv">Bathrobes</h2>
   <div class="grid g3">
-    <div class="card rv"><img src="/uploads/lookbook/bathrobe_piquet.webp" alt="Woman in a white piquet bathrobe" loading="lazy"><h3>Piquet Bathrobe</h3><p>L / XL · 260 gsm · light, for spa and warm climates</p><p class="price">€14.90 – €18.90 <small>per pc · excl. VAT · from stock</small></p></div>
-    <div class="card rv"><img src="/uploads/lookbook/bathrobe_fluffy.webp" alt="Woman in a white fluffy terry bathrobe" loading="lazy"><h3>Fluffy Bathrobe</h3><p>Large · 450 gsm · thick terry, true hotel feel</p><p class="price">€29.50 – €37.50 <small>per pc · excl. VAT · from stock</small></p></div>
-    <div class="card rv"><img src="/uploads/lookbook/bathrobe_blue-stitch.webp" alt="Woman in a white bathrobe with blue stitching" loading="lazy"><h3>Blue-Stitch Bathrobe</h3><p>One size · 350 gsm · white with blue stitching</p><p class="price">€28.90 – €36.90 <small>per pc · excl. VAT · MOQ 500</small></p></div>
+    <div class="card rv"><img src="/uploads/lookbook/bathrobe_piquet.webp" alt="Woman in a white piquet bathrobe" loading="lazy"><h3>Piquet Bathrobe</h3><p>L / XL · 260 gsm · light, for spa and warm climates</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€18.90</b></div><div><span>500–999 pcs</span><b>€16.50</b></div><div><span>1,000+ pcs</span><b>€14.90</b></div></div><small>per pc · excl. VAT · from stock</small></div></div>
+    <div class="card rv"><img src="/uploads/lookbook/bathrobe_fluffy.webp" alt="Woman in a white fluffy terry bathrobe" loading="lazy"><h3>Fluffy Bathrobe</h3><p>Large · 450 gsm · thick terry, true hotel feel</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€37.50</b></div><div><span>500–999 pcs</span><b>€32.50</b></div><div><span>1,000+ pcs</span><b>€29.50</b></div></div><small>per pc · excl. VAT · from stock</small></div></div>
+    <div class="card rv"><img src="/uploads/lookbook/bathrobe_blue-stitch.webp" alt="Woman in a white bathrobe with blue stitching" loading="lazy"><h3>Blue-Stitch Bathrobe</h3><p>One size · 350 gsm · white with blue stitching</p><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€36.90</b></div><div><span>500–999 pcs</span><b>€31.90</b></div><div><span>1,000+ pcs</span><b>€28.90</b></div></div><small>per pc · excl. VAT · MOQ 500</small></div></div>
   </div>
 </div></section>
 
@@ -467,7 +478,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">In-Room</p><h2>Linen Kimono</h2>
     <p class="lead">Pure linen kimono, light and elegant.</p>
-    <div class="specs"><div class="spec"><span>Sizes</span><span>L / XL</span></div><div class="spec"><span>Options</span><span>With or without pockets</span></div><div class="spec"><span>Fabric</span><span>100% linen</span></div></div><p class="price">€42.90 – €58.50 <small>per pc · excl. VAT · MOQ 200</small></p>
+    <div class="specs"><div class="spec"><span>Sizes</span><span>L / XL</span></div><div class="spec"><span>Options</span><span>With or without pockets</span></div><div class="spec"><span>Fabric</span><span>100% linen</span></div></div><div class="price"><div class="tiers"><div><span>100–499 pcs</span><b>€49.50 – €58.50</b></div><div><span>500–999 pcs</span><b>€46.50 – €54.50</b></div><div><span>1,000+ pcs</span><b>€42.90 – €50.50</b></div></div><small>per pc · excl. VAT · MOQ 200</small></div>
   </div>
 </section>
 

@@ -98,9 +98,9 @@ section{position:relative}
 /* partners + values */
 .names{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 34px;margin-top:30px;text-align:center}
 .names span{font-family:var(--serif);font-size:clamp(18px,1.8vw,24px);color:var(--muted)}
-.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:26px 40px;align-items:center;justify-items:center;margin-top:30px}
-.logos img{max-height:62px;max-width:100%;width:auto;object-fit:contain;opacity:.85}
-.also{margin-top:26px;text-align:center;color:var(--muted);font-size:14px;line-height:1.6;max-width:900px;margin-left:auto;margin-right:auto}
+.logos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px 30px;margin-top:28px}
+.logos span{display:flex;align-items:center;justify-content:center;height:64px;min-width:0}
+.logos img{display:block;width:100%;height:100%;object-fit:contain;opacity:.85}
 .vals{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:26px 28px;margin-top:26px}
 .vals figure{margin:0;text-align:center}
 .vals img{height:64px;width:auto;max-width:100%;object-fit:contain;display:block;margin:0 auto 12px}
@@ -153,7 +153,7 @@ html,body{height:100%;overflow:hidden}
   .names{gap:8px 18px}.names span{font-size:15px}
   .stats{grid-template-columns:repeat(3,1fr)!important}.stats .n{font-size:26px!important}
   .vals{grid-template-columns:repeat(3,1fr);gap:16px 10px;margin-top:16px}.vals img{height:40px;margin-bottom:6px}.vals figcaption{font-size:11px}
-  .logos{grid-template-columns:repeat(2,1fr);gap:18px 22px;margin-top:18px}.logos img{max-height:40px}.also{font-size:11.5px;margin-top:14px}
+  .logos{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 16px;margin-top:16px}.logos span{height:40px}
 }
 /* controls */
 .ctrl{position:fixed;right:clamp(12px,3vw,32px);bottom:clamp(12px,3vh,28px);z-index:30;display:flex;align-items:center;gap:10px;background:rgba(246,243,238,.92);border:1px solid var(--line);border-radius:999px;padding:6px 8px 6px 16px;box-shadow:0 4px 18px rgba(0,0,0,.12);backdrop-filter:blur(6px)}
@@ -225,6 +225,7 @@ html,body{height:100%;overflow:hidden}
 .rq-msg{font-size:14px;color:#A33A3A}
 .rq .bad{border-color:#A33A3A!important}
 @media (max-width:860px){.rq-grid{grid-template-columns:1fr}.rq-item b{font-size:16px}}
+video::-webkit-media-controls,video::-webkit-media-controls-start-playback-button,video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none}
 </style>
 </head>
 <body>
@@ -235,8 +236,7 @@ html,body{height:100%;overflow:hidden}
 <main id="top" class="deck" tabindex="-1">
 <section class="hero" aria-label="Hospitality Lookbook 2027">
   <video autoplay muted loop playsinline preload="metadata" poster="/lookbook/cover-poster.jpg">
-    <source src="/uploads/2026/07/HOSPITALITY-PAGE-Hero-VIDEO-SOAB-SS26-DRONE-HOSPITALITY-HORIZONTAL.webm" type="video/webm">
-    <source src="/uploads/2026/07/HOSPITALITY-PAGE-Hero-VIDEO-SOAB-SS26-DRONE-HOSPITALITY-HORIZONTAL.mp4" type="video/mp4">
+    <source src="/uploads/lookbook/hero_drone.mp4" type="video/mp4">
   </video>
   <div class="in">
     <p class="eyebrow">Hospitality Lookbook · 2027</p>
@@ -265,7 +265,7 @@ html,body{height:100%;overflow:hidden}
   <h2 class="rv">Four ways we serve your guests</h2>
   <div class="grid g4">
     <a class="card rv" href="#pool" style="color:inherit;text-decoration:none"><img src="/uploads/2025/04/premium-hospitality-pool-towels.webp" alt="Stack of pool towels by an infinity pool" loading="lazy"><p class="n">01</p><h3>Pool &amp; Beach Towels</h3><p>Signature pool towels, custom jacquards and light beach towels.</p></a>
-    <a class="card rv" href="#welcome" style="color:inherit;text-decoration:none"><img src="/uploads/2025/04/welcome-gift-set-towel-hat-eye-mask-bag.webp" alt="Sun of a Beach welcome gift set" loading="lazy"><p class="n">02</p><h3>Welcome Gifts</h3><p>Pouches, bags, scarves and accessories your guests take home.</p></a>
+    <a class="card rv" href="#welcome" style="color:inherit;text-decoration:none"><img src="/uploads/lookbook/card-welcome-gifts.webp" alt="Sun of a Beach welcome gift set" loading="lazy"><p class="n">02</p><h3>Welcome Gifts</h3><p>Pouches, bags, scarves and accessories your guests take home.</p></a>
     <a class="card rv" href="#inroom" style="color:inherit;text-decoration:none"><img src="/uploads/2025/04/white-spa-towels-hotel-luxury-collection.webp" alt="Stacked white hotel towels" loading="lazy"><p class="n">03</p><h3>In-Room Towels &amp; Bathrobes</h3><p>White towels, bathrobes and kimonos for daily service.</p></a>
     <a class="card rv" href="#boutique" style="color:inherit;text-decoration:none"><img src="/uploads/2025/04/Hospitality-hotel-boutique-towels-display.webp" alt="Sun of a Beach display in a hotel shop" loading="lazy"><p class="n">04</p><h3>Hotel Boutique</h3><p>Our products for sale in your hotel's shop.</p></a>
   </div>
@@ -345,11 +345,11 @@ html,body{height:100%;overflow:hidden}
 </section>
 
 <section class="split sand">
-  <div class="media"><img src="/uploads/2025/04/hospitality-welcome-gift-black-pouch.webp" alt="Hand holding a black waterproof pouch over the sea" loading="lazy"></div>
+  <div class="media"><img src="/uploads/lookbook/pouches-life-3.webp" alt="Hand holding a black waterproof pouch over the sea" loading="lazy"></div>
   <div class="text rv">
     <p class="eyebrow">Welcome Gifts</p><h2>Made to travel with your guests</h2>
     <p class="lead">From your pool to their home, a waterproof pouch with your logo goes everywhere they do.</p>
-    <div class="grid g2" style="margin-top:4px"><img src="/uploads/2025/04/elegant-womans-hand-blue-pouch-corporate-gift.webp" alt="Hand holding a navy pouch" style="border-radius:6px;aspect-ratio:1;object-fit:cover" loading="lazy"><img src="/uploads/2025/04/pink-red-pouch-corporate-gift.webp" alt="Two terry pouches" style="border-radius:6px;aspect-ratio:1;object-fit:cover" loading="lazy"></div>
+    <div class="grid g2" style="margin-top:4px"><img src="/uploads/lookbook/pouches-life-1.webp" alt="Hand holding a navy printed pouch" style="border-radius:6px;aspect-ratio:1;object-fit:cover" loading="lazy"><img src="/uploads/lookbook/pouches-life-2.webp" alt="Two taupe terry pouches" style="border-radius:6px;aspect-ratio:1;object-fit:cover" loading="lazy"></div>
   </div>
 </section>
 
@@ -465,8 +465,7 @@ html,body{height:100%;overflow:hidden}
 
 <section><div class="wrap center">
   <h2 class="rv">Trusted by</h2>
-  <div class="logos rv"><img src="/uploads/lookbook/logos/four-seasons.png" alt="Four Seasons" loading="lazy"><img src="/uploads/lookbook/logos/oo-saint-geran.png" alt="One&amp;Only Le Saint Géran" loading="lazy"><img src="/uploads/lookbook/logos/oo-kea.png" alt="One&amp;Only Kéa" loading="lazy"><img src="/uploads/lookbook/logos/w-barcelona.png" alt="W Barcelona" loading="lazy"><img src="/uploads/lookbook/logos/w-costa-navarino.png" alt="W Costa Navarino" loading="lazy"><img src="/uploads/lookbook/logos/romanos.png" alt="The Romanos, Costa Navarino" loading="lazy"><img src="/uploads/lookbook/logos/grace.png" alt="Grace Hotel Santorini" loading="lazy"><img src="/uploads/lookbook/logos/odera.png" alt="Odera Tinos" loading="lazy"><img src="/uploads/lookbook/logos/rooster.png" alt="The Rooster Antiparos" loading="lazy"><img src="/uploads/lookbook/logos/parocks.png" alt="Pārocks" loading="lazy"></div>
-  <p class="also rv">Also: Hotel Grande Bretagne · Canaves Collection · The Ilisian · Bagatelle Miami · Club Med · Nikki Beach · Domes Noruz Chania · Daios Cove · Alemagou · Belvedere Mykonos · Jackie O&#39; Mykonos · Beach House Antiparos</p>
+  <div class="logos rv"><span><img src="/uploads/lookbook/logos/fourseasons.png" alt="Four Seasons Athens" loading="lazy"></span><span><img src="/uploads/lookbook/logos/oo_saintgeran.png" alt="One&amp;Only Le Saint Géran" loading="lazy"></span><span><img src="/uploads/lookbook/logos/oo_kea.png" alt="One&amp;Only Kéa" loading="lazy"></span><span><img src="/uploads/lookbook/logos/w_barcelona.png" alt="W Barcelona" loading="lazy"></span><span><img src="/uploads/lookbook/logos/w_costanavarino.png" alt="W Costa Navarino" loading="lazy"></span><span><img src="/uploads/lookbook/logos/romanos.png" alt="The Romanos, Costa Navarino" loading="lazy"></span><span><img src="/uploads/lookbook/logos/grandebretagne.png" alt="Hotel Grande Bretagne" loading="lazy"></span><span><img src="/uploads/lookbook/logos/canaves.png" alt="Canaves Collection" loading="lazy"></span><span><img src="/uploads/lookbook/logos/ilisian.png" alt="The Ilisian" loading="lazy"></span><span><img src="/uploads/lookbook/logos/bagatelle.png" alt="Bagatelle Miami" loading="lazy"></span><span><img src="/uploads/lookbook/logos/clubmed.png" alt="Club Med" loading="lazy"></span><span><img src="/uploads/lookbook/logos/nikki.png" alt="Nikki Beach" loading="lazy"></span><span><img src="/uploads/lookbook/logos/odera.png" alt="Odera Tinos" loading="lazy"></span><span><img src="/uploads/lookbook/logos/rooster.png" alt="The Rooster Antiparos" loading="lazy"></span><span><img src="/uploads/lookbook/logos/grace.png" alt="Grace Hotel Santorini" loading="lazy"></span><span><img src="/uploads/lookbook/logos/domes.png" alt="Domes Noruz Chania" loading="lazy"></span><span><img src="/uploads/lookbook/logos/daios.png" alt="Daios Cove" loading="lazy"></span><span><img src="/uploads/lookbook/logos/parocks.png" alt="Pārocks" loading="lazy"></span><span><img src="/uploads/lookbook/logos/alemagou.png" alt="Alemagou" loading="lazy"></span><span><img src="/uploads/lookbook/logos/belvedere.png" alt="Belvedere Mykonos" loading="lazy"></span><span><img src="/uploads/lookbook/logos/jackieo.png" alt="Jackie O&#39; Mykonos" loading="lazy"></span><span><img src="/uploads/lookbook/logos/beachhouse.png" alt="Beach House Antiparos" loading="lazy"></span></div>
 </div></section>
 
 <section class="sand"><div class="wrap">
@@ -499,8 +498,7 @@ html,body{height:100%;overflow:hidden}
 </div></section>
 <section class="hero closing" id="contact" aria-label="Contact">
   <video autoplay muted loop playsinline preload="none" poster="/lookbook/closing-poster.jpg">
-    <source src="/uploads/2024/09/sun-of-a-beach-yellow-pareo-bikini.webm" type="video/webm">
-    <source src="/uploads/2024/09/sun-of-a-beach-yellow-pareo-bikini.mp4" type="video/mp4">
+    <source src="/uploads/lookbook/closing_pareo.mp4" type="video/mp4">
   </video>
   <div class="in">
     <p class="line">Upgrade your TripAdvisor ratings, one towel at a time.</p>
@@ -536,7 +534,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 if('IntersectionObserver' in window){
   const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.querySelectorAll('.rv').forEach(r=>r.classList.add('in')); if(e.target.classList.contains('rv')) e.target.classList.add('in'); } }),{root:deck,threshold:.5});
   slides.forEach(s=>io.observe(s));
-  const vo=new IntersectionObserver(es=>es.forEach(e=>{ const v=e.target; if(e.isIntersecting){ v.preload='auto'; const p=v.play(); if(p&&p.catch) p.catch(()=>{}); } else v.pause(); }),{root:deck,threshold:.5});
+  const vids=[...document.querySelectorAll('video')];
+  vids.forEach(v=>{ v.muted=true; v.defaultMuted=true; v.setAttribute('muted',''); v.playsInline=true; v.setAttribute('playsinline',''); v.setAttribute('webkit-playsinline',''); v.controls=false; v.disablePictureInPicture=true; });
+  const tryPlay=v=>{ v.muted=true; const p=v.play(); if(p&&p.catch) p.catch(()=>{}); };
+  const vo=new IntersectionObserver(es=>es.forEach(e=>{ const v=e.target; v._vis=e.isIntersecting; if(e.isIntersecting){ if(v.preload!=='auto'){ v.preload='auto'; v.load(); } tryPlay(v); } else v.pause(); }),{root:deck,threshold:.35});
+  // iOS Low Power Mode blocks autoplay: start visible videos on the first touch
+  const kick=()=>vids.forEach(v=>{ if(v._vis && v.paused) tryPlay(v); });
+  ['touchstart','touchend','click','scroll'].forEach(t=>(t==='scroll'?deck:document).addEventListener(t,kick,{passive:true}));
   document.querySelectorAll('video').forEach(v=>vo.observe(v));
 } else document.querySelectorAll('.rv').forEach(el=>el.classList.add('in'));
 update(); deck.focus({preventScroll:true});

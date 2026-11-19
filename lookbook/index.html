@@ -226,6 +226,16 @@ html,body{height:100%;overflow:hidden}
 .rq .bad{border-color:#A33A3A!important}
 @media (max-width:860px){.rq-grid{grid-template-columns:1fr}.rq-item b{font-size:16px}}
 video::-webkit-media-controls,video::-webkit-media-controls-start-playback-button,video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none}
+
+/* tote bags: each image carries its own name */
+.media-cap{position:absolute;left:16px;top:16px;z-index:2;background:rgba(246,243,238,.92);color:var(--ink);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+.tote-mesh{margin:6px 0 4px}.tote-mesh h3{margin-bottom:4px}
+.split .grid.totes{grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.split .grid.totes .card img{height:min(30vh,340px);max-height:none;width:100%;margin-bottom:8px}
+@media (max-width:860px){.split .grid.totes{gap:12px;margin-top:10px}.split .grid.totes .card img{height:12svh;margin-bottom:4px}.tote-mesh{margin:0}.tote-mesh h3{font-size:18px}.tote-mesh p{font-size:13px}.tote-mesh .pick{margin-top:6px}}
+/* partner logos: files share one 2:1 canvas with equal visual weight */
+.logos span{height:96px}
+@media (max-width:860px){.logos{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 10px}.logos span{height:62px}}
 </style>
 </head>
 <body>
@@ -373,15 +383,14 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
 </div></section>
 
 <section class="split">
-  <div class="media"><img src="/uploads/2025/04/hospitality-welcome-gifts-sun-of-a-beach-woman-departure-bag.webp" alt="Guest at hotel reception with a branded cotton mesh bag" loading="lazy"></div>
+  <div class="media"><img src="/uploads/2025/04/hospitality-welcome-gifts-sun-of-a-beach-woman-departure-bag.webp" alt="Guest at hotel reception with a branded cotton mesh bag" loading="lazy"><span class="media-cap">Cotton Mesh Bag</span></div>
   <div class="text rv">
-    <p class="eyebrow">Welcome Gifts · Bags</p><h2>Totes</h2>
-    <div class="specs" style="margin-top:6px">
-      <div class="spec"><span>Cotton Mesh Bag</span><span>Light cotton mesh, 1-colour logo print</span></div>
-      <div class="spec"><span>Terry Tote</span><span>40 × 38 × 11 cm, also small</span></div>
-      <div class="spec"><span>Standing Canvas Tote</span><span>49 × 34 × 23 cm</span></div>
+    <p class="eyebrow">Welcome Gifts · Bags</p><h2>Tote Bags</h2>
+    <div class="textcard tote-mesh"><h3>Cotton Mesh Bag</h3><p>In the photo · light cotton mesh, 1-colour logo print</p></div>
+    <div class="grid g2 totes">
+      <div class="card"><img class="cut" src="/uploads/lookbook/tote_terry.webp" alt="Blue terry tote bag" loading="lazy"><h3>Terry Tote</h3><p>40 × 38 × 11 cm, also small</p></div>
+      <div class="card"><img class="cut" src="/uploads/lookbook/tote_canvas.webp" alt="Blue and white striped standing canvas tote" loading="lazy"><h3>Standing Canvas Tote</h3><p>49 × 34 × 23 cm</p></div>
     </div>
-    <div class="grid g2" style="margin-top:22px"><img src="/uploads/lookbook/tote_terry.webp" alt="Blue terry tote bag" style="aspect-ratio:1;object-fit:contain" loading="lazy"><img src="/uploads/lookbook/tote_canvas.webp" alt="Blue and white striped standing canvas tote" style="aspect-ratio:1;object-fit:contain" loading="lazy"></div>
   </div>
 </section>
 
@@ -561,7 +570,7 @@ update(); deck.focus({preventScroll:true});
     const h2=s.querySelector('.text h2'), specs=s.querySelector('.text .specs');
     if(!h2||!specs) return;
     const name=h2.textContent.trim();
-    if(/^(Totes)$/.test(name)){ specs.querySelectorAll('.spec').forEach(r=>{ const n=r.firstElementChild.textContent.trim(); r.appendChild(btn(n,'xs')); }); }
+    if(/^(Tote Bags)$/.test(name)){ specs.querySelectorAll('.spec').forEach(r=>{ const n=r.firstElementChild.textContent.trim(); r.appendChild(btn(n,'xs')); }); }
     else { const b=btn(name), l=s.querySelector('.text .lead'); (l||h2).after(b); b.style.marginTop='0'; b.style.marginBottom='18px'; }
   });
   document.querySelectorAll('div.card h3, .textcard h3').forEach(h=>{ h.parentNode.appendChild(btn(h.textContent.trim(),'sm')); });

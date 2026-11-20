@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Villas &amp; Yachts Presentation &amp; Lookbook 2027 · Sun of a Beach</title>
+<title>Villas &amp; Yachts Lookbook &amp; Price List 2027 · Sun of a Beach</title>
 <meta name="description" content="Pool and beach towels, welcome gifts and white towels for villas and yachts by Sun of a Beach. Designed in Greece, from small quantities.">
 <meta name="robots" content="noindex, follow">
-<meta property="og:title" content="Sun of a Beach · Villas &amp; Yachts Presentation &amp; Lookbook 2027">
+<meta property="og:title" content="Sun of a Beach · Villas &amp; Yachts Lookbook &amp; Price List 2027">
 <meta property="og:description" content="Beach essentials, made for villas &amp; yachts. Designed in Greece.">
 <meta property="og:image" content="https://b2b.sunofabeach.com/lookbook/cover-poster.jpg">
 <meta property="og:type" content="website">
@@ -241,11 +241,28 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
 .split .media.mosaic img{position:static;inset:auto;width:100%;height:100%;min-height:0;aspect-ratio:auto;object-fit:cover}
 @media (max-width:860px){.split.divider .media.mosaic{height:min(64svh,123vw)}.split .media.mosaic img{height:100%}}
 /* indicative price ranges */
-.price{margin-top:14px;font-family:var(--serif);font-size:clamp(20px,1.7vw,26px);color:var(--ink);line-height:1.2}
+.price{margin-top:14px;line-height:1.2}
 .price small{display:block;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:4px}
 .card .price{margin-top:8px;font-size:clamp(17px,1.3vw,20px);color:var(--ink)}
 .card .price small{font-size:10.5px}
 @media (max-width:860px){.price{font-size:19px;margin-top:10px}.card .price{font-size:15px;margin-top:4px}.card .price small{font-size:9.5px;letter-spacing:.06em}}
+/* price tiers */
+.price .tiers{display:grid;gap:0;border-top:1px solid var(--line);max-width:420px}
+.price .tiers div{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:5px 0;border-bottom:1px solid var(--line)}
+.price .tiers span{font-family:var(--sans);font-size:13px;color:#6B6658}
+.price .tiers b{font-family:var(--serif);font-weight:500;font-size:clamp(17px,1.4vw,21px);color:var(--ink);white-space:nowrap}
+.price .tiers em{font-style:normal;color:#9A9384}
+.card .price .tiers div{padding:3px 0}
+.card .price .tiers span{font-size:11px}
+.card .price .tiers b{font-size:clamp(13px,1.05vw,16px)}
+.g6 .card .price .tiers div{flex-direction:column;align-items:flex-start;gap:0}
+@media (max-width:860px){.price .tiers span{font-size:11px}.price .tiers b{font-size:15px}.card .price .tiers b{font-size:12.5px}.card .price .tiers span{font-size:9.5px}.card .price .tiers div{padding:2px 0}.g6 .card .price .tiers div{flex-direction:row;align-items:baseline}}
+.logo-table{max-width:760px}.logo-table .tiers{max-width:none}.logo-table .tiers span{font-size:15px;color:var(--muted)}.logo-table .lt{font-family:var(--sans);font-weight:700;color:var(--ink);font-size:15px;margin-right:6px}
+@media (max-width:860px){.logo-table .tiers div{flex-direction:column;align-items:flex-start;gap:2px}.logo-table .tiers span,.logo-table .lt{font-size:13px}}
+.price .tiers .vy span{color:var(--ink);font-weight:700}
+.addons .spec span:last-child{white-space:nowrap;font-weight:600}
+.addons .terms{font-size:13px;line-height:1.55;color:var(--muted,#6b6b6b);margin-top:18px}
+@media(max-width:820px){.addons .spec{font-size:13px}}
 .ph-img{height:min(36vh,420px);border-radius:6px;margin-bottom:14px;background:var(--greige);display:flex;align-items:center;justify-content:center}.ph-img span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
 @media (max-width:860px){.ph-img{height:15svh;margin-bottom:8px}}
 </style>
@@ -256,12 +273,12 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
 
 
 <main id="top" class="deck" tabindex="-1">
-<section class="hero" aria-label="Villas &amp; Yachts Presentation &amp; Lookbook 2027">
+<section class="hero" aria-label="Villas &amp; Yachts Lookbook &amp; Price List 2027">
   <video autoplay muted loop playsinline preload="metadata" poster="/lookbook/cover-poster.jpg">
     <source src="/uploads/lookbook/hero_drone.mp4" type="video/mp4">
   </video>
   <div class="in">
-    <p class="eyebrow">Villas &amp; Yachts Presentation &amp; Lookbook · 2027</p>
+    <p class="eyebrow">Villas &amp; Yachts Lookbook &amp; Price List · 2027</p>
     <img class="logo" src="/lookbook/logo-hospitality-light.png" alt="Sun of a Beach Hospitality">
     <p class="motto">Born in Greece, raised on the beach.</p>
   </div>
@@ -303,7 +320,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Classic Pool Towel</h2>
     <p class="lead">Extra-long pool towel, ready from stock, with your logo embroidered. Indanthrene® vat-dyed for lasting colour.</p>
-    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>460 gsm</span></div></div>
+    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>460 gsm</span></div></div><div class="price"><div class="tiers"><div><span>From 100 pcs</span><b>€27.50 – €34.50</b></div></div><small>per pc · excl. VAT · embroidery from +€2.00 · MOQ 100</small></div>
     <p class="sub">Colours</p>
     <div class="sw"><div><i style="background:#C9BBA6"></i>Greige</div><div><i style="background:#1F2D4F"></i>Deep Blue</div><div><i style="background:#4A4A47"></i>Graphite</div><div><i style="background:#2F5D9E"></i>Indigo</div><div><i style="background:#E7B53C"></i>Sunflower</div><div><i style="background:#A9573A"></i>Coppertone</div></div>
   </div>
@@ -314,7 +331,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Yacht Towel</h2>
     <p class="lead">Soft, generous pool towel with a refined finish and your logo embroidered.</p>
-    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>450 gsm</span></div></div>
+    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>450 gsm</span></div></div><div class="price"><div class="tiers"><div><span>From 30 pcs</span><b>€48.00</b></div></div><small>per pc · excl. VAT · embroidery from +€2.00 · MOQ 30</small></div>
   </div>
 </section>
 
@@ -323,7 +340,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">Pool &amp; Beach</p><h2>Twist Towel</h2>
     <p class="lead">Pool towel with a twisted-yarn texture and your logo embroidered.</p>
-    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>450 gsm</span></div></div>
+    <div class="specs"><div class="spec"><span>Size</span><span>100 × 200 cm</span></div><div class="spec"><span>Weight</span><span>450 gsm</span></div></div><div class="price"><div class="tiers"><div><span>From 30 pcs</span><b>€48.00</b></div></div><small>per pc · excl. VAT · embroidery from +€2.00 · MOQ 30</small></div>
   </div>
 </section>
 
@@ -345,9 +362,9 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
 <section><div class="wrap">
   <p class="eyebrow rv">Welcome Gifts</p><h2 class="rv">Waterproof pouches</h2>
   <div class="grid g3">
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_passepartout.webp" alt="Passepartout pouches in several colours" loading="lazy"><h3>Passepartout</h3><p>31 × 19 cm · waterproof, flat</p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_luna.webp" alt="Small Luna pouch in rust terry" loading="lazy"><h3>Small Luna</h3><p>26 × 17 cm · waterproof, half-moon shape</p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_cosmo.webp" alt="Cosmo pouch in dark grey terry with wrist strap" loading="lazy"><h3>Cosmo</h3><p>24 × 14 × 11 cm · waterproof, with wrist strap</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_passepartout.webp" alt="Passepartout pouches in several colours" loading="lazy"><h3>Passepartout</h3><p>31 × 19 cm · waterproof, flat</p><div class="price"><div class="tiers"><div><span>From 100 pcs</span><b>€13.50 – €15.50</b></div></div><small>per pc · excl. VAT · embroidery from +€2.00 · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_luna.webp" alt="Small Luna pouch in rust terry" loading="lazy"><h3>Small Luna</h3><p>26 × 17 cm · waterproof, half-moon shape</p><div class="price"><div class="tiers"><div><span>From 100 pcs</span><b>€13.50 – €16.50</b></div></div><small>per pc · excl. VAT · embroidery from +€2.00 · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/pouch_cosmo.webp" alt="Cosmo pouch in dark grey terry with wrist strap" loading="lazy"><h3>Cosmo</h3><p>24 × 14 × 11 cm · waterproof, with wrist strap</p><div class="price"><div class="tiers"><div><span>From 100 pcs</span><b>€14.90</b></div></div><small>per pc · excl. VAT · embroidery from +€2.00 · MOQ 100</small></div></div>
   </div>
   <p class="note rv">Lined and waterproof, with your logo embroidered. Passepartout and Small Luna also in velvet or custom canvas.</p>
 </div></section>
@@ -358,6 +375,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
     <p class="eyebrow">Welcome Gifts</p><h2>Feather Beach Towel</h2>
     <p class="lead">Lightweight beach towel with fringes, in our SS27 colours. A custom design is quoted separately.</p>
     <div class="specs"><div class="spec"><span>95 × 160 cm</span><span>260 gsm</span></div><div class="spec"><span>95 × 180 cm</span><span>260 gsm</span></div><div class="spec"><span>Colours</span><span>SS27 colours</span></div></div>
+    <div class="price"><div class="tiers"><div><span>95 × 160 cm</span><b>€15.90</b></div><div><span>95 × 180 cm</span><b>€16.50</b></div></div><small>per pc · excl. VAT · custom design quoted separately · MOQ 150</small></div>
   </div>
 </section>
 
@@ -367,15 +385,16 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
     <p class="eyebrow">Welcome Gifts</p><h2>Sleeping Masks</h2>
     <p class="lead">Sleeping mask with silk inside, alone or as a set with its case, with your logo embroidered.</p>
     <div class="specs"><div class="spec"><span>Sleeping mask</span><span>22 × 8.5 cm</span></div><div class="spec"><span>Sleeping mask set</span><span>22 × 8.5 cm · with case</span></div></div>
+    <div class="price"><div class="tiers"><div><span>Sleeping mask</span><b>€8.90</b></div><div><span>Sleeping mask set</span><b>€13.50</b></div></div><small>per pc · excl. VAT · embroidery from +€2.00 · MOQ 60</small></div>
   </div>
 </section>
 
 <section class="sand"><div class="wrap">
   <p class="eyebrow rv">Welcome Gifts</p><h2 class="rv">Sunglasses, caps and hats</h2>
   <div class="grid g3">
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/sunglasses.webp" alt="Sunglasses on terry pouches" loading="lazy"><h3>Sunglasses</h3><p>Tortoise or monochrome · classic shape</p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/cap.webp" alt="Cotton baseball cap with embroidered logo" loading="lazy"><h3>Baseball Cap</h3><p>Cotton · 1 or 2 embroideries</p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/straw-hat.webp" alt="Straw hat with a printed logo ribbon" loading="lazy"><h3>Straw Hat</h3><p>Natural straw · ribbon printed with your logo</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/sunglasses.webp" alt="Sunglasses on terry pouches" loading="lazy"><h3>Sunglasses</h3><p>Tortoise or monochrome · classic shape</p><div class="price"><div class="tiers"><div><span>From 100 pcs</span><b>€14.50</b></div></div><small>per pc · excl. VAT · logo on request · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/cap.webp" alt="Cotton baseball cap with embroidered logo" loading="lazy"><h3>Baseball Cap</h3><p>Cotton · 1 or 2 embroideries</p><div class="price"><div class="tiers"><div><span>1 embroidery</span><b>€9.90</b></div><div><span>2 embroideries</span><b>€12.50</b></div></div><small>per pc · excl. VAT · embroidery incl. · MOQ 60</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/straw-hat.webp" alt="Straw hat with a printed logo ribbon" loading="lazy"><h3>Straw Hat</h3><p>Natural straw · ribbon printed with your logo</p><div class="price"><div class="tiers"><div><span>From 200 pcs</span><b>€11.50</b></div></div><small>per pc · excl. VAT · ribbon print incl. · MOQ 200</small></div></div>
   </div>
 </div></section>
 
@@ -383,10 +402,10 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="media"><img src="/uploads/2025/04/hospitality-welcome-gifts-sun-of-a-beach-woman-departure-bag.webp" alt="Guest at hotel reception with a branded cotton mesh bag" loading="lazy"><span class="media-cap">Cotton Mesh Bag</span></div>
   <div class="text rv">
     <p class="eyebrow">Welcome Gifts · Bags</p><h2>Tote Bags</h2>
-    <div class="textcard tote-mesh"><h3>Cotton Mesh Bag</h3><p>In the photo · light cotton mesh, 1-colour logo print</p></div>
+    <div class="textcard tote-mesh"><h3>Cotton Mesh Bag</h3><p>In the photo · light cotton mesh, 1-colour logo print</p><div class="price"><div class="tiers"><div><span>From 100 pcs</span><b>€8.90</b></div></div><small>per pc · excl. VAT · 1-colour print incl. · MOQ 100</small></div></div>
     <div class="grid g2 totes">
-      <div class="card"><img class="cut" src="/uploads/lookbook/tote_terry.webp" alt="Blue terry tote bag" loading="lazy"><h3>Terry Tote</h3><p>40 × 38 × 11 cm</p></div>
-      <div class="card"><img class="cut" src="/uploads/lookbook/tote_canvas.webp?v=6" alt="Ecru and greige striped standing canvas tote" loading="lazy"><h3>Standing Canvas Tote</h3><p>49 × 34 × 23 cm</p></div>
+      <div class="card"><img class="cut" src="/uploads/lookbook/tote_terry.webp" alt="Blue terry tote bag" loading="lazy"><h3>Terry Tote</h3><p>Small, or big 40 × 38 × 11 cm</p><div class="price"><div class="tiers"><div><span>Small · up to 40 / 60+</span><b>€28.90 / €22.50</b></div><div><span>Big · up to 40 / 60+</span><b>€32.50 / €25.50</b></div></div><small>per pc · excl. VAT · embroidery from +€2.00 · MOQ 60</small></div></div>
+      <div class="card"><img class="cut" src="/uploads/lookbook/tote_canvas.webp?v=6" alt="Ecru and greige striped standing canvas tote" loading="lazy"><h3>Standing Canvas Tote</h3><p>49 × 34 × 23 cm</p><div class="price"><div class="tiers"><div><span>From 200 pcs</span><b>€52.50</b></div></div><small>per pc · excl. VAT · logo on request · MOQ 200</small></div></div>
     </div>
   </div>
 </section>
@@ -395,28 +414,28 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <p class="eyebrow rv">Welcome Gifts · Bags</p><h2 class="rv">Burlap bags</h2>
   <p class="lead rv">Natural burlap, printed with your logo.</p>
   <div class="grid g2 bags2">
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/burlap.webp" alt="Natural burlap bag printed with a hotel logo" loading="lazy"><h3>Burlap Bag</h3><p>45 × 35 cm</p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/burlap_resort.webp" alt="Resort burlap tote with black handles" loading="lazy"><h3>Resort Burlap Bag</h3><p>38 × 38 × 12.5 cm, contrast handles</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/burlap.webp" alt="Natural burlap bag printed with a hotel logo" loading="lazy"><h3>Burlap Bag</h3><p>45 × 35 cm</p><div class="price"><div class="tiers"><div><span>Up to 100 pcs</span><b>€5.50</b></div><div><span>From 150 pcs</span><b>€4.00</b></div></div><small>per pc · excl. VAT · print from +€1.00 · MOQ 150</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/burlap_resort.webp" alt="Resort burlap tote with black handles" loading="lazy"><h3>Resort Burlap Bag</h3><p>38 × 38 × 12.5 cm, contrast handles</p><div class="price"><div class="tiers"><div><span>Up to 100 pcs</span><b>€7.50</b></div><div><span>From 150 pcs</span><b>€6.50</b></div></div><small>per pc · excl. VAT · print from +€1.00 · MOQ 150</small></div></div>
   </div>
 </div></section>
 <section><div class="wrap">
   <p class="eyebrow rv">Welcome Gifts · Bags</p><h2 class="rv">Woven fabric bags</h2>
   <p class="lead rv">Light woven fabrics, printed with your logo.</p>
   <div class="grid g6">
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_gaia.webp" alt="Gaia woven fabric bag" loading="lazy"><h3>Gaia</h3><p>Flat bag · 45 × 35 cm</p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_breeze.webp" alt="Breeze woven fabric bag" loading="lazy"><h3>Breeze</h3><p>Flat bag · 45 × 35 cm</p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_porto.webp" alt="Porto woven fabric bag" loading="lazy"><h3>Porto</h3><p>Flat bag · 45 × 35 cm</p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_riviera.webp" alt="Riviera woven fabric bag" loading="lazy"><h3>Riviera</h3><p>Flat bag · 45 × 35 cm</p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_ammos.webp" alt="Ammos woven fabric bag" loading="lazy"><h3>Ammos</h3><p>Flat bag · 45 × 35 cm</p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_terra.webp" alt="Terra woven fabric bag" loading="lazy"><h3>Terra</h3><p>Tote · 38 × 38 × 12.5 cm</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_gaia.webp" alt="Gaia woven fabric bag" loading="lazy"><h3>Gaia</h3><p>Flat bag · 45 × 35 cm</p><div class="price"><div class="tiers"><div><span>Up to 100 pcs</span><b>€13.50</b></div><div><span>From 100 pcs</span><b>€8.50</b></div></div><small>excl. VAT · print +€1.00 · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_breeze.webp" alt="Breeze woven fabric bag" loading="lazy"><h3>Breeze</h3><p>Flat bag · 45 × 35 cm</p><div class="price"><div class="tiers"><div><span>Up to 100 pcs</span><b>€13.50</b></div><div><span>From 100 pcs</span><b>€8.50</b></div></div><small>excl. VAT · print +€1.00 · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_porto.webp" alt="Porto woven fabric bag" loading="lazy"><h3>Porto</h3><p>Flat bag · 45 × 35 cm</p><div class="price"><div class="tiers"><div><span>Up to 100 pcs</span><b>€8.90</b></div><div><span>From 100 pcs</span><b>€6.50</b></div></div><small>excl. VAT · print +€1.00 · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_riviera.webp" alt="Riviera woven fabric bag" loading="lazy"><h3>Riviera</h3><p>Flat bag · 45 × 35 cm</p><div class="price"><div class="tiers"><div><span>Up to 100 pcs</span><b>€7.90</b></div><div><span>From 100 pcs</span><b>€5.50</b></div></div><small>excl. VAT · print +€1.00 · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_ammos.webp" alt="Ammos woven fabric bag" loading="lazy"><h3>Ammos</h3><p>Flat bag · 45 × 35 cm</p><div class="price"><div class="tiers"><div><span>Up to 100 pcs</span><b>€11.90</b></div><div><span>From 100 pcs</span><b>€8.50</b></div></div><small>excl. VAT · print +€1.00 · MOQ 100</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/woven_terra.webp" alt="Terra woven fabric bag" loading="lazy"><h3>Terra</h3><p>Tote · 38 × 38 × 12.5 cm</p><div class="price"><div class="tiers"><div><span>Up to 100 pcs</span><b>€12.50</b></div><div><span>From 100 pcs</span><b>€8.90</b></div></div><small>excl. VAT · print +€1.00 · MOQ 100</small></div></div>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <p class="eyebrow rv">Welcome Gifts</p><h2 class="rv">Scarves in your own design</h2>
   <div class="grid g2">
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/scarf_silk.webp" alt="Pure silk scarf printed in blue" loading="lazy"><h3>Silk Scarves</h3><p>52 × 52 or 64 × 64 cm · 12–14 momme, hand-rolled edges · 1- or 2-side print</p></div>
-    <div class="card rv"><img class="cut" src="/uploads/lookbook/scarf_satin.webp" alt="Satin-feel scarf in a gift box" loading="lazy"><h3>Silk-feel Scarves</h3><p>43 × 43, 52 × 52 or 64 × 64 cm · silk look and feel · 1- or 2-side print</p></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/scarf_silk.webp" alt="Pure silk scarf printed in blue" loading="lazy"><h3>Silk Scarves</h3><p>52 × 52 or 64 × 64 cm · 12–14 momme, hand-rolled edges · 1- or 2-side print</p><div class="price"><div class="tiers"><div><span>52 × 52 · 14 momme</span><b>€20.50</b></div><div><span>64 × 64 · 12 momme</span><b>€23.90</b></div></div><small>per pc · excl. VAT · your design · MOQ 50 / 20</small></div></div>
+    <div class="card rv"><img class="cut" src="/uploads/lookbook/scarf_satin.webp" alt="Satin-feel scarf in a gift box" loading="lazy"><h3>Silk-feel Scarves</h3><p>43 × 43, 52 × 52 or 64 × 64 cm · silk look and feel · 1- or 2-side print</p><div class="price"><div class="tiers"><div><span>52 × 52 · 1-sided</span><b>€9.90</b></div><div><span>64 × 64 · 2-sided</span><b>€15.50</b></div></div><small>per pc · excl. VAT · your design · MOQ 50</small></div></div>
   </div>
 </div></section>
 
@@ -436,9 +455,27 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   <div class="text rv">
     <p class="eyebrow">In-Room</p><h2>White Towel Collection</h2>
     <p class="lead">Hotel-quality white towels for villas and yachts, ready from stock, with your logo embroidered.</p>
-    <div class="specs"><div class="spec"><span>Bath mat</span><span>50 × 80 cm · 700 gsm</span></div><div class="spec"><span>Body towel</span><span>90 × 160 cm · 600 gsm</span></div><div class="spec"><span>Face &amp; hair towel</span><span>50 × 100 cm · 600 gsm</span></div><div class="spec"><span>Hand towel</span><span>30 × 30 cm · 500 gsm</span></div></div>
+    <div class="price"><div class="tiers"><div><span>Bath mat · 50 × 80 cm · 700 gsm</span><b>€15.00</b></div><div><span>Body · 90 × 160 cm · 600 gsm</span><b>€14.90</b></div><div><span>Face &amp; hair · 50 × 100 cm · 600 gsm</span><b>€7.90</b></div><div><span>Hand · 30 × 30 cm · 500 gsm</span><b>€1.20</b></div></div><small>excl. VAT · embroidery +€2.00 · MOQ 30</small></div>
   </div>
 </section>
+
+<section class="sand"><div class="wrap">
+  <p class="eyebrow rv">Personalisation &amp; terms</p><h2 class="rv">Logo, print and design</h2>
+  <div class="grid g2 addons">
+    <div class="rv"><p class="eyebrow">Per piece, on top of the product price</p><div class="specs">
+      <div class="spec"><span>1-colour embroidery · small / medium</span><span>+€2.00</span></div>
+      <div class="spec"><span>1-colour embroidery · large</span><span>+€3.30</span></div>
+      <div class="spec"><span>Multi-colour embroidery · small / medium</span><span>+€3.00</span></div>
+      <div class="spec"><span>Multi-colour embroidery · large</span><span>+€4.50</span></div>
+      <div class="spec"><span>1-colour print · bags</span><span>+€1.00</span></div>
+      <div class="spec"><span>Multi-colour print · bags</span><span>+€1.80</span></div></div></div>
+    <div class="rv"><p class="eyebrow">Feather custom design · one-off, excl. VAT</p><div class="specs">
+      <div class="spec"><span>Adapting one of our designs</span><span>€180</span></div>
+      <div class="spec"><span>More detailed design</span><span>€350</span></div>
+      <div class="spec"><span>Fully new pattern</span><span>up to €600</span></div></div>
+      <p class="terms">Towel prices are for about 30–80 pcs; larger quantities on request. Offer valid 20 days · 50% deposit on confirmation, balance before delivery · lead time starts after design approval and deposit · delivered quantity may vary ±5% · colours and logo position confirmed on a digital mock-up.</p></div>
+  </div>
+</div></section>
 
 <!-- 04 BOUTIQUE -->
 <section><div class="wrap center">
@@ -527,7 +564,7 @@ update(); deck.focus({preventScroll:true});
 <script>
 // "My selection": tap ♡ on products, then request an offer with quantities. Sends like the site's Hospitality form.
 (function(){
-  const KEY='soab_vy_lookbook_sel', QTY=['Up to 100','100–250','250–500','500–1,000','1,000+','Not sure yet'];
+  const KEY='soab_vy_price_sel', QTY=['Up to 100','100–250','250–500','500–1,000','1,000+','Not sure yet'];
   let sel=[]; try{ sel=JSON.parse(localStorage.getItem(KEY)||'[]')||[]; }catch(e){}
   const save=()=>{ try{ localStorage.setItem(KEY,JSON.stringify(sel)); }catch(e){} };
   const has=n=>sel.some(s=>s.name===n);
@@ -536,7 +573,7 @@ update(); deck.focus({preventScroll:true});
   function thumbOf(el){ if(!el) return ''; const c=el.closest('.card,section'); const i=c&&(c.querySelector('img:not(.brandmark)')||null), v=c&&c.querySelector('video'); return (i&&i.getAttribute('src'))||(v&&v.getAttribute('poster'))||''; }
   // product slides with specs: one button for the product (lists of variants get a button per row)
   document.querySelectorAll('#top > section').forEach(s=>{
-    const h2=s.querySelector('.text h2'), specs=s.querySelector('.text .specs');
+    const h2=s.querySelector('.text h2'), specs=s.querySelector('.text .specs')||s.querySelector('.text .price');
     if(!h2||!specs) return;
     const name=h2.textContent.trim();
     if(/^(Tote Bags)$/.test(name)){ specs.querySelectorAll('.spec').forEach(r=>{ const n=r.firstElementChild.textContent.trim(); r.appendChild(btn(n,'xs')); }); }
@@ -589,14 +626,14 @@ update(); deck.focus({preventScroll:true});
     if(d.hpname) { form.hidden=true; document.getElementById('rq-done').hidden=false; return; }
     const picks=sel.map(s=>s.name+' – '+(s.qty?(s.qty==='Not sure yet'?'quantity not sure yet':'approx. '+s.qty+' pcs'):'no quantity given'));
     d.hosp_interest=picks.length?picks.join('; '):'';
-    d.message=[picks.length?'Selected in the Villas & Yachts Lookbook:\n- '+picks.join('\n- '):'', d.message].filter(Boolean).join('\n\n');
+    d.message=[picks.length?'Selected in the Villas & Yachts Lookbook & Price List:\n- '+picks.join('\n- '):'', d.message].filter(Boolean).join('\n\n');
     const q=qualified(d); d._qualified=q[0]?'Yes':'No'; d._qualified_reason=q[1];
-    const src='Villas & Yachts Lookbook'+(ref?' (ref '+ref+')':'')+(document.referrer?' · from '+document.referrer:'');
-    const summary='B2B site – '+FORM+' (/villas-yachts/)\nQualified: '+d._qualified+' ('+q[1]+')\n\n'+[['Type of property',d.property_type],['Size',d.property_size],['Needed by',d.delivery_date],['Phone',d.phone]].filter(r=>r[1]).map(r=>r[0]+': '+r[1]).join('\n')+'\n\n'+d.message+'\n\nSource: '+src;
+    const src='Villas & Yachts Lookbook & Price List'+(ref?' (ref '+ref+')':'')+(document.referrer?' · from '+document.referrer:'');
+    const summary='B2B site – '+FORM+' (/villas-yachts/lookbook-price-list/)\nQualified: '+d._qualified+' ('+q[1]+')\n\n'+[['Type of property',d.property_type],['Size',d.property_size],['Needed by',d.delivery_date],['Phone',d.phone]].filter(r=>r[1]).map(r=>r[0]+': '+r[1]).join('\n')+'\n\n'+d.message+'\n\nSource: '+src;
     go.disabled=true; go.textContent='Sending…';
     const hs=fetch('https://api.hsforms.com/submissions/v3/integration/submit/143463613/'+GUID,{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({fields:[['email',d.email],['firstname',d['full name']],['company',d['company name']],['phone',d.phone],['message',summary]].filter(f=>f[1]).map(f=>({name:f[0],value:f[1]})),context:{pageUri:location.href,pageName:document.title}})}).then(r=>{ if(!r.ok) throw r.status; });
-    const em=fetch('/api/enquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({},d,{_form:FORM,_page:'/villas-yachts/',_t:T0,_source:src}))}).then(r=>{ if(!r.ok) throw r.status; });
+    const em=fetch('/api/enquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({},d,{_form:FORM,_page:'/villas-yachts/lookbook-price-list/',_t:T0,_source:src}))}).then(r=>{ if(!r.ok) throw r.status; });
     const res=await Promise.allSettled([hs,em]);
     go.disabled=false; go.textContent='Send request';
     if(res.some(r=>r.status==='fulfilled')){

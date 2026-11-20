@@ -646,11 +646,11 @@ update(); deck.focus({preventScroll:true});
     d.message=[picks.length?'Selected in the Hospitality Lookbook & Price List:\n- '+picks.join('\n- '):'', d.message].filter(Boolean).join('\n\n');
     const q=qualified(d); d._qualified=q[0]?'Yes':'No'; d._qualified_reason=q[1];
     const src='Hospitality Lookbook & Price List'+(ref?' (ref '+ref+')':'')+(document.referrer?' · from '+document.referrer:'');
-    const summary='B2B site – '+FORM+' (/hotels-resorts/price-list/)\nQualified: '+d._qualified+' ('+q[1]+')\n\n'+[['Type of property',d.property_type],['Size',d.property_size],['Needed by',d.delivery_date],['Phone',d.phone]].filter(r=>r[1]).map(r=>r[0]+': '+r[1]).join('\n')+'\n\n'+d.message+'\n\nSource: '+src;
+    const summary='B2B site – '+FORM+' (/hotels-resorts/lookbook-price-list/)\nQualified: '+d._qualified+' ('+q[1]+')\n\n'+[['Type of property',d.property_type],['Size',d.property_size],['Needed by',d.delivery_date],['Phone',d.phone]].filter(r=>r[1]).map(r=>r[0]+': '+r[1]).join('\n')+'\n\n'+d.message+'\n\nSource: '+src;
     go.disabled=true; go.textContent='Sending…';
     const hs=fetch('https://api.hsforms.com/submissions/v3/integration/submit/143463613/'+GUID,{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({fields:[['email',d.email],['firstname',d['full name']],['company',d['company name']],['phone',d.phone],['message',summary]].filter(f=>f[1]).map(f=>({name:f[0],value:f[1]})),context:{pageUri:location.href,pageName:document.title}})}).then(r=>{ if(!r.ok) throw r.status; });
-    const em=fetch('/api/enquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({},d,{_form:FORM,_page:'/hotels-resorts/price-list/',_t:T0,_source:src}))}).then(r=>{ if(!r.ok) throw r.status; });
+    const em=fetch('/api/enquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({},d,{_form:FORM,_page:'/hotels-resorts/lookbook-price-list/',_t:T0,_source:src}))}).then(r=>{ if(!r.ok) throw r.status; });
     const res=await Promise.allSettled([hs,em]);
     go.disabled=false; go.textContent='Send request';
     if(res.some(r=>r.status==='fulfilled')){

@@ -11,3 +11,13 @@
 /wp-admin                         /  301
 /wp-admin/*                       /  301
 /wp-login.php                     /  301
+
+# Presentations: clearer URLs (old links keep working)
+/lookbook                      /hotels-resorts/  301
+/lookbook/                     /hotels-resorts/  301
+/lookbook-price-list           /hotels-resorts/price-list/  301
+/lookbook-price-list/          /hotels-resorts/price-list/  301
+/villas-yachts-lookbook        /villas-yachts/  301
+/villas-yachts-lookbook/       /villas-yachts/  301
+/villas-yachts-price-list      /villas-yachts/price-list/  301
+/villas-yachts-price-list/     /villas-yachts/price-list/  301

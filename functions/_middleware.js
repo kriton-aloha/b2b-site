@@ -9,7 +9,7 @@ export async function onRequest(ctx) {
   if (!(res.headers.get("content-type") || "").includes("text/html")) return res;
 
   const url = new URL(ctx.request.url);
-  if (url.pathname.startsWith("/lookbook")) return res; // client presentation: no banner
+  if (/^\/(lookbook|hotels-resorts|villas-yachts)/.test(url.pathname)) return res; // client presentation: no banner
   const country = (url.searchParams.get("geo") || ctx.request.cf?.country || "").toUpperCase();
   if (country !== "GR") return res;
 
